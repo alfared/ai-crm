@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: ai_crm_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ai_crm
+      POSTGRES_USER: ai_crm
+      POSTGRES_PASSWORD: ai_crm_password
+    ports:
+      - "5434:5432"
+    volumes:
+      - ai_crm_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U ai_crm -d ai_crm
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - ai_crm_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: ai_crm_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    ports:
+      - "6381:6379"
+    volumes:
+      - ai_crm_redis_data:/data
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - ai_crm_network
+
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: ai_crm_mailpit
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - ai_crm_network
+
+volumes:
+  ai_crm_postgres_data:
+  ai_crm_redis_data:
+
+networks:
+  ai_crm_network:
+    driver: bridge
