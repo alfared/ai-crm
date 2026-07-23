@@ -17,3 +17,30 @@ export const UserRole = {
 } as const
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const LeadStatus = {
+  NEW: 'NEW',
+  CONTACTED: 'CONTACTED',
+  QUALIFIED: 'QUALIFIED',
+  UNQUALIFIED: 'UNQUALIFIED',
+  CONVERTED: 'CONVERTED',
+  LOST: 'LOST'
+} as const
+
+export type LeadStatus = (typeof LeadStatus)[keyof typeof LeadStatus]
+
+
+export const LeadSource = {
+  MANUAL: 'MANUAL',
+  WEBSITE: 'WEBSITE',
+  LINKEDIN: 'LINKEDIN',
+  REFFERAL: 'REFFERAL',
+  EMAIL: 'EMAIL',
+  PHONE: 'PHONE',
+  EVENT: 'EVENT',
+  ADVERTISING: 'ADVERTISING',
+  OTHER: 'OTHER'
+} as const
+
+export type LeadSource = (typeof LeadSource)[keyof typeof LeadSource]
