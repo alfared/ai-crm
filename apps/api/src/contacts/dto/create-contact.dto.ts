@@ -4,7 +4,6 @@ import {
   IsOptional,
   IsString,
   IsUUID,
-  Max,
   MaxLength,
   MinLength,
 } from 'class-validator';
@@ -15,14 +14,14 @@ export class CreateContactDto {
   })
   @IsOptional()
   @IsUUID()
-  id?: string;
+  companyId?: string;
 
   @ApiProperty({
     example: 'John',
   })
   @IsString()
-  @MinLength(2)
-  @MaxLength(50)
+  @MinLength(1)
+  @MaxLength(100)
   firstName!: string;
 
   @ApiProperty({
@@ -43,6 +42,14 @@ export class CreateContactDto {
 
   @ApiPropertyOptional({
     example: '+420 123 456 789',
+  })
+  @IsOptional()
+  @IsString()
+  @MaxLength(50)
+  phone?: string;
+
+  @ApiPropertyOptional({
+    example: 'Chief Technology Officer',
   })
   @IsOptional()
   @IsString()
