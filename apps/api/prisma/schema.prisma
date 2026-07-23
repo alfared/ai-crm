@@ -24,6 +24,7 @@ model Workspace {
 
   users     User[]
   companies Company[]
+  contacts  Contact[]
 }
 
 model User {
@@ -56,7 +57,30 @@ model Company {
   updatedAt   DateTime @updatedAt
 
   workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contacts  Contact[]
 
   @@index([workspaceId])
   @@index([workspaceId, name])
+}
+
+model Contact {
+  id          String   @id @default(uuid())
+  workspaceId String
+  companyId   String?
+  firstName   String
+  lastName    String
+  email       String?
+  phone       String?
+  jobTitle    String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  company   Company?  @relation(fields: [companyId], references: [id], onDelete: SetNull)
+
+  @@index([workspaceId])
+  @@index([companyId])
+  @@index([workspaceId, lastName])
+  @@index([workspaceId, email])
 }
