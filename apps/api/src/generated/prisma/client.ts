@@ -59,3 +59,8 @@ export type Company = Prisma.CompanyModel
  * 
  */
 export type Contact = Prisma.ContactModel
+/**
+ * Model Lead
+ * 
+ */
+export type Lead = Prisma.LeadModel

@@ -54,7 +54,8 @@ export const ModelName = {
   Workspace: 'Workspace',
   User: 'User',
   Company: 'Company',
-  Contact: 'Contact'
+  Contact: 'Contact',
+  Lead: 'Lead'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -131,6 +132,34 @@ export const ContactScalarFieldEnum = {
 } as const
 
 export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
+
+
+export const LeadScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  companyId: 'companyId',
+  contactId: 'contactId',
+  assignedToId: 'assignedToId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  companyName: 'companyName',
+  jobTitle: 'jobTitle',
+  status: 'status',
+  source: 'source',
+  estimatedValue: 'estimatedValue',
+  currency: 'currency',
+  notes: 'notes',
+  contactedAt: 'contactedAt',
+  qualifiedAt: 'qualifiedAt',
+  convertedAt: 'convertedAt',
+  lostAt: 'lostAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
 
 
 export const SortOrder = {
