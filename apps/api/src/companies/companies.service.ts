@@ -25,9 +25,8 @@ export class CompaniesService {
   }
 
   async findAll(workspaceId: string, query: ListCompaniesQueryDto) {
-    const page = undefined !== query.page && query.page > 0 ? query.page : 1;
-    const limit =
-      undefined !== query.limit && query.limit > 0 ? query.limit : 10;
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 20;
     const skip = (page - 1) * limit;
 
     const where: Prisma.CompanyWhereInput = {

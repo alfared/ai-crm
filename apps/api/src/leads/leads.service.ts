@@ -27,7 +27,7 @@ export class LeadsService {
         status: dto.status ?? LeadStatus.NEW,
         source: dto.source,
         estimatedValue: dto.estimatedValue,
-        currency: dto.currency?.trim().toUpperCase() ?? 'EUR',
+        currency: dto.currency?.trim().toUpperCase() || 'EUR',
         notes: this.normalizeOptionalString(dto.notes),
         companyId: dto.companyId,
         contactId: dto.contactId,
@@ -160,7 +160,7 @@ export class LeadsService {
         );
       }
 
-      if (dto.contactId) {
+      if (dto.contactId && !dto.companyId) {
         const contact = await this.prisma.contact.findFirst({
           where: {
             id: dto.contactId,
@@ -172,7 +172,7 @@ export class LeadsService {
 
         if (!contact) {
           throw new BadRequestException(
-            `Contact with ID ${dto.contactId} does not exist in the company ${dto.companyId} within the workspace.`,
+            `Contact with ID ${dto.contactId} does not exist in the workspace.`,
           );
         }
       }

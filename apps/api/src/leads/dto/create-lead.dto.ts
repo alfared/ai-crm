@@ -24,7 +24,7 @@ export class CreateLeadDto {
   @MaxLength(100)
   firstName!: string;
 
-  @ApiPropertyOptional({
+  @ApiProperty({
     example: 'Doe',
     description: 'The last name of the lead',
   })

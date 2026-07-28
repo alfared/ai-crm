@@ -1,4 +1,8 @@
-import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+import {
+  createParamDecorator,
+  ExecutionContext,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Request } from 'express';
 import { AuthenticatedUser } from '../types/authenticated-user.type';
 
@@ -8,7 +12,9 @@ export const CurrentUser = createParamDecorator(
   (_data: unknown, context: ExecutionContext): AuthenticatedUser => {
     const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
     if (!request.user) {
-      throw new Error('Authenticated user is missing from request');
+      throw new UnauthorizedException(
+        'Authenticated user is missing from request',
+      );
     }
 
     return request.user;

@@ -28,7 +28,7 @@ enum LeadSource {
   MANUAL
   WEBSITE
   LINKEDIN
-  REFFERAL
+  REFERRAL
   EMAIL
   PHONE
   EVENT
@@ -131,7 +131,7 @@ model Lead {
   currency       String?  @default("EUR")
   notes          String?
 
-  contactedAt DateTime?
+  contractedAt DateTime?
   qualifiedAt DateTime?
   convertedAt DateTime?
   lostAt      DateTime?
