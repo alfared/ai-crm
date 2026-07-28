@@ -10,6 +10,19 @@ export function getApiErrorMessage(
   error: unknown,
   fallback = "Something went wrong",
 ): string {
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof error.message === "string"
+  ) {
+    return error.message;
+  }
+
   if (!axios.isAxiosError<ApiErrorResponse>(error)) {
     return fallback;
   }
