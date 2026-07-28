@@ -1,24 +1,15 @@
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { AppModule } from './app.module';
-import { ConfigService } from '@nestjs/config';
 
-async function bootstrap(): Promise<void> {
+import { AppModule } from './app.module';
+
+async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
   app.setGlobalPrefix('api');
-
-  const frontendUrl = configService.get<string>(
-    'FRONTEND_URL',
-    'http://localhost:5173',
-  );
-
-  app.enableCors({
-    origin: frontendUrl,
-    credentials: true,
-  });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -28,25 +19,30 @@ async function bootstrap(): Promise<void> {
     }),
   );
 
+  const frontendUrls = configService
+    .get<string>('FRONTEND_URLS', 'http://localhost:5173')
+    .split(',')
+    .map((url) => url.trim());
+
+  app.enableCors({
+    origin: frontendUrls,
+    credentials: true,
+  });
+
   const swaggerConfig = new DocumentBuilder()
     .setTitle('AI CRM API')
-    .setDescription('REST API for AI CRM')
+    .setDescription('API documentation for AI CRM')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
 
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
+
   SwaggerModule.setup('api/docs', app, swaggerDocument);
 
-  const port = process.env.PORT || 3001;
+  const port = Number(configService.get<string>('PORT', '3001'));
 
-  await app.listen(port);
-
-  console.log(`API: http://localhost:${port}/api`);
-  console.log(`Swagger: http://localhost:${port}/api/docs`);
+  await app.listen(port, '0.0.0.0');
 }
 
-bootstrap().catch((error: unknown) => {
-  console.error('Failed to start application:', error);
-  process.exit(1);
-});
+void bootstrap();

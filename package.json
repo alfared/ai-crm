@@ -4,17 +4,19 @@
   "private": true,
   "description": "AI-powered CRM built with NestJS, React and TypeScript",
   "scripts": {
-    "dev": "pnpm --parallel --filter ./apps/* dev",
-    "build": "pnpm --recursive build",
-    "lint": "pnpm --recursive lint",
-    "test": "pnpm --recursive test",
-    "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down",
-    "docker:logs": "docker compose logs -f",
-    "docker:reset": "docker compose down -v"
+    "dev": "concurrently -n API,WEB \"pnpm dev:api\" \"pnpm dev:web\"",
+    "dev:api": "pnpm --filter api start:dev",
+    "dev:web": "pnpm --filter frontend dev",
+    "build": "pnpm build:api && pnpm build:web",
+    "build:api": "pnpm --filter api build",
+    "build:web": "pnpm --filter frontend build",
+    "start:api": "pnpm --filter api start:prod"
   },
   "engines": {
-    "node": ">=22"
+    "node": "22.x"
   },
-  "packageManager": "pnpm@10.0.0"
+  "packageManager": "pnpm@10.0.0",
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  }
 }
