@@ -13,7 +13,7 @@
     "start:api": "pnpm --filter api start:prod"
   },
   "engines": {
-    "node": ">=22"
+    "node": "22.x"
   },
   "packageManager": "pnpm@10.0.0",
   "devDependencies": {
