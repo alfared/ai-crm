@@ -1,14 +1,10 @@
 import axios from "axios";
-
-import { env } from "../config/env";
 import { tokenStorage } from "../lib/auth/token-storage";
 
 export const apiClient = axios.create({
-  baseURL: env.apiUrl,
-  timeout: 15_000,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
-    Accept: "application/json",
   },
 });
 
