@@ -1,11 +1,12 @@
 import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
   const configService = app.get(ConfigService);
 
   app.setGlobalPrefix('api');
@@ -18,22 +19,30 @@ async function bootstrap() {
     }),
   );
 
-  const allowedOrigins = configService
+  const frontendUrls = configService
     .get<string>('FRONTEND_URLS', 'http://localhost:5173')
     .split(',')
-    .map((origin) => origin.trim());
+    .map((url) => url.trim());
 
   app.enableCors({
-    origin: allowedOrigins,
+    origin: frontendUrls,
     credentials: true,
   });
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('AI CRM API')
+    .setDescription('API documentation for AI CRM')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
+
+  const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
+
+  SwaggerModule.setup('api/docs', app, swaggerDocument);
 
   const port = Number(configService.get<string>('PORT', '3001'));
 
   await app.listen(port, '0.0.0.0');
 }
 
-bootstrap().catch((error: unknown) => {
-  console.error('Failed to start application:', error);
-  process.exit(1);
-});
+void bootstrap();
