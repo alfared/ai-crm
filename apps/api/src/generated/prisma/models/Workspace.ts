@@ -183,6 +183,9 @@ export type WorkspaceWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   users?: Prisma.UserListRelationFilter
+  companies?: Prisma.CompanyListRelationFilter
+  contacts?: Prisma.ContactListRelationFilter
+  leads?: Prisma.LeadListRelationFilter
 }
 
 export type WorkspaceOrderByWithRelationInput = {
@@ -192,6 +195,9 @@ export type WorkspaceOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   users?: Prisma.UserOrderByRelationAggregateInput
+  companies?: Prisma.CompanyOrderByRelationAggregateInput
+  contacts?: Prisma.ContactOrderByRelationAggregateInput
+  leads?: Prisma.LeadOrderByRelationAggregateInput
 }
 
 export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
@@ -204,6 +210,9 @@ export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Workspace"> | Date | string
   users?: Prisma.UserListRelationFilter
+  companies?: Prisma.CompanyListRelationFilter
+  contacts?: Prisma.ContactListRelationFilter
+  leads?: Prisma.LeadListRelationFilter
 }, "id" | "slug">
 
 export type WorkspaceOrderByWithAggregationInput = {
@@ -235,6 +244,9 @@ export type WorkspaceCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateInput = {
@@ -244,6 +256,9 @@ export type WorkspaceUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUpdateInput = {
@@ -253,6 +268,9 @@ export type WorkspaceUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateInput = {
@@ -262,6 +280,9 @@ export type WorkspaceUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateManyInput = {
@@ -339,12 +360,57 @@ export type WorkspaceUpdateOneRequiredWithoutUsersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutUsersInput, Prisma.WorkspaceUpdateWithoutUsersInput>, Prisma.WorkspaceUncheckedUpdateWithoutUsersInput>
 }
 
+export type WorkspaceCreateNestedOneWithoutCompaniesInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutCompaniesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutCompaniesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutCompaniesNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutCompaniesInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutCompaniesInput
+  upsert?: Prisma.WorkspaceUpsertWithoutCompaniesInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutCompaniesInput, Prisma.WorkspaceUpdateWithoutCompaniesInput>, Prisma.WorkspaceUncheckedUpdateWithoutCompaniesInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutContactsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutContactsInput, Prisma.WorkspaceUncheckedCreateWithoutContactsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutContactsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutContactsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutContactsInput, Prisma.WorkspaceUncheckedCreateWithoutContactsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutContactsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutContactsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutContactsInput, Prisma.WorkspaceUpdateWithoutContactsInput>, Prisma.WorkspaceUncheckedUpdateWithoutContactsInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutLeadsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutLeadsInput, Prisma.WorkspaceUncheckedCreateWithoutLeadsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutLeadsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutLeadsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutLeadsInput, Prisma.WorkspaceUncheckedCreateWithoutLeadsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutLeadsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutLeadsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutLeadsInput, Prisma.WorkspaceUpdateWithoutLeadsInput>, Prisma.WorkspaceUncheckedUpdateWithoutLeadsInput>
+}
+
 export type WorkspaceCreateWithoutUsersInput = {
   id?: string
   name: string
   slug: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutUsersInput = {
@@ -353,6 +419,9 @@ export type WorkspaceUncheckedCreateWithoutUsersInput = {
   slug: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutUsersInput = {
@@ -377,6 +446,9 @@ export type WorkspaceUpdateWithoutUsersInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutUsersInput = {
@@ -385,6 +457,189 @@ export type WorkspaceUncheckedUpdateWithoutUsersInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutCompaniesInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutCompaniesInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutCompaniesInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutCompaniesInput>
+}
+
+export type WorkspaceUpsertWithoutCompaniesInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutCompaniesInput, Prisma.WorkspaceUncheckedUpdateWithoutCompaniesInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutCompaniesInput, Prisma.WorkspaceUncheckedCreateWithoutCompaniesInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutCompaniesInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutCompaniesInput, Prisma.WorkspaceUncheckedUpdateWithoutCompaniesInput>
+}
+
+export type WorkspaceUpdateWithoutCompaniesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutCompaniesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutContactsInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutContactsInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutContactsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutContactsInput, Prisma.WorkspaceUncheckedCreateWithoutContactsInput>
+}
+
+export type WorkspaceUpsertWithoutContactsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutContactsInput, Prisma.WorkspaceUncheckedUpdateWithoutContactsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutContactsInput, Prisma.WorkspaceUncheckedCreateWithoutContactsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutContactsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutContactsInput, Prisma.WorkspaceUncheckedUpdateWithoutContactsInput>
+}
+
+export type WorkspaceUpdateWithoutContactsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutContactsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutLeadsInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutLeadsInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutLeadsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutLeadsInput, Prisma.WorkspaceUncheckedCreateWithoutLeadsInput>
+}
+
+export type WorkspaceUpsertWithoutLeadsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutLeadsInput, Prisma.WorkspaceUncheckedUpdateWithoutLeadsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutLeadsInput, Prisma.WorkspaceUncheckedCreateWithoutLeadsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutLeadsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutLeadsInput, Prisma.WorkspaceUncheckedUpdateWithoutLeadsInput>
+}
+
+export type WorkspaceUpdateWithoutLeadsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutLeadsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 
@@ -394,10 +649,16 @@ export type WorkspaceUncheckedUpdateWithoutUsersInput = {
 
 export type WorkspaceCountOutputType = {
   users: number
+  companies: number
+  contacts: number
+  leads: number
 }
 
 export type WorkspaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | WorkspaceCountOutputTypeCountUsersArgs
+  companies?: boolean | WorkspaceCountOutputTypeCountCompaniesArgs
+  contacts?: boolean | WorkspaceCountOutputTypeCountContactsArgs
+  leads?: boolean | WorkspaceCountOutputTypeCountLeadsArgs
 }
 
 /**
@@ -417,6 +678,27 @@ export type WorkspaceCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types
   where?: Prisma.UserWhereInput
 }
 
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountCompaniesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CompanyWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountContactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContactWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountLeadsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeadWhereInput
+}
+
 
 export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -425,6 +707,9 @@ export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   createdAt?: boolean
   updatedAt?: boolean
   users?: boolean | Prisma.Workspace$usersArgs<ExtArgs>
+  companies?: boolean | Prisma.Workspace$companiesArgs<ExtArgs>
+  contacts?: boolean | Prisma.Workspace$contactsArgs<ExtArgs>
+  leads?: boolean | Prisma.Workspace$leadsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["workspace"]>
 
@@ -455,6 +740,9 @@ export type WorkspaceSelectScalar = {
 export type WorkspaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["workspace"]>
 export type WorkspaceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   users?: boolean | Prisma.Workspace$usersArgs<ExtArgs>
+  companies?: boolean | Prisma.Workspace$companiesArgs<ExtArgs>
+  contacts?: boolean | Prisma.Workspace$contactsArgs<ExtArgs>
+  leads?: boolean | Prisma.Workspace$leadsArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WorkspaceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -464,6 +752,9 @@ export type $WorkspacePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   name: "Workspace"
   objects: {
     users: Prisma.$UserPayload<ExtArgs>[]
+    companies: Prisma.$CompanyPayload<ExtArgs>[]
+    contacts: Prisma.$ContactPayload<ExtArgs>[]
+    leads: Prisma.$LeadPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -866,6 +1157,9 @@ readonly fields: WorkspaceFieldRefs;
 export interface Prisma__WorkspaceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   users<T extends Prisma.Workspace$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  companies<T extends Prisma.Workspace$companiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  contacts<T extends Prisma.Workspace$contactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$contactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  leads<T extends Prisma.Workspace$leadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1314,6 +1608,78 @@ export type Workspace$usersArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+}
+
+/**
+ * Workspace.companies
+ */
+export type Workspace$companiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Company
+   */
+  select?: Prisma.CompanySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Company
+   */
+  omit?: Prisma.CompanyOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CompanyInclude<ExtArgs> | null
+  where?: Prisma.CompanyWhereInput
+  orderBy?: Prisma.CompanyOrderByWithRelationInput | Prisma.CompanyOrderByWithRelationInput[]
+  cursor?: Prisma.CompanyWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CompanyScalarFieldEnum | Prisma.CompanyScalarFieldEnum[]
+}
+
+/**
+ * Workspace.contacts
+ */
+export type Workspace$contactsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Contact
+   */
+  select?: Prisma.ContactSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Contact
+   */
+  omit?: Prisma.ContactOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContactInclude<ExtArgs> | null
+  where?: Prisma.ContactWhereInput
+  orderBy?: Prisma.ContactOrderByWithRelationInput | Prisma.ContactOrderByWithRelationInput[]
+  cursor?: Prisma.ContactWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ContactScalarFieldEnum | Prisma.ContactScalarFieldEnum[]
+}
+
+/**
+ * Workspace.leads
+ */
+export type Workspace$leadsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Lead
+   */
+  select?: Prisma.LeadSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Lead
+   */
+  omit?: Prisma.LeadOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LeadInclude<ExtArgs> | null
+  where?: Prisma.LeadWhereInput
+  orderBy?: Prisma.LeadOrderByWithRelationInput | Prisma.LeadOrderByWithRelationInput[]
+  cursor?: Prisma.LeadWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LeadScalarFieldEnum | Prisma.LeadScalarFieldEnum[]
 }
 
 /**

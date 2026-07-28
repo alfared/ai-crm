@@ -15,6 +15,27 @@ enum UserRole {
   MEMBER
 }
 
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  UNQUALIFIED
+  CONVERTED
+  LOST
+}
+
+enum LeadSource {
+  MANUAL
+  WEBSITE
+  LINKEDIN
+  REFERRAL
+  EMAIL
+  PHONE
+  EVENT
+  ADVERTISING
+  OTHER
+}
+
 model Workspace {
   id        String   @id @default(uuid())
   name      String
@@ -22,7 +43,10 @@ model Workspace {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  users User[]
+  users     User[]
+  companies Company[]
+  contacts  Contact[]
+  leads     Lead[]
 }
 
 model User {
@@ -36,7 +60,99 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspace     Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  assignedLeads Lead[]    @relation("AssignedLeads")
 
   @@index([workspaceId])
+}
+
+model Company {
+  id          String   @id @default(uuid())
+  workspaceId String
+  name        String
+  website     String?
+  industry    String?
+  phone       String?
+  email       String?
+  address     String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  contacts  Contact[]
+  leads     Lead[]
+
+  @@index([workspaceId])
+  @@index([workspaceId, name])
+}
+
+model Contact {
+  id          String   @id @default(uuid())
+  workspaceId String
+  companyId   String?
+  firstName   String
+  lastName    String
+  email       String?
+  phone       String?
+  jobTitle    String?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  company   Company?  @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  leads     Lead[]
+
+  @@index([workspaceId])
+  @@index([companyId])
+  @@index([workspaceId, lastName])
+  @@index([workspaceId, email])
+}
+
+model Lead {
+  id           String  @id @default(uuid())
+  workspaceId  String
+  companyId    String?
+  contactId    String?
+  assignedToId String?
+
+  firstName   String
+  lastName    String
+  email       String?
+  phone       String?
+  companyName String?
+  jobTitle    String?
+
+  status LeadStatus @default(NEW)
+  source LeadSource @default(MANUAL)
+
+  estimatedValue Decimal? @db.Decimal(12, 2)
+  currency       String?  @default("EUR")
+  notes          String?
+
+  contractedAt DateTime?
+  qualifiedAt DateTime?
+  convertedAt DateTime?
+  lostAt      DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  company Company? @relation(fields: [companyId], references: [id], onDelete: SetNull)
+
+  contact Contact? @relation(fields: [contactId], references: [id], onDelete: SetNull)
+
+  assignedTo User? @relation("AssignedLeads", fields: [assignedToId], references: [id], onDelete: SetNull)
+
+  @@index([workspaceId])
+  @@index([workspaceId, status])
+  @@index([workspaceId, source])
+  @@index([workspaceId, createdAt])
+  @@index([companyId])
+  @@index([contactId])
+  @@index([assignedToId])
+  @@index([email])
 }

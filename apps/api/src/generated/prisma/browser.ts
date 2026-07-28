@@ -27,3 +27,18 @@ export type Workspace = Prisma.WorkspaceModel
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model Company
+ * 
+ */
+export type Company = Prisma.CompanyModel
+/**
+ * Model Contact
+ * 
+ */
+export type Contact = Prisma.ContactModel
+/**
+ * Model Lead
+ * 
+ */
+export type Lead = Prisma.LeadModel

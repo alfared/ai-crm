@@ -52,7 +52,10 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Workspace: 'Workspace',
-  User: 'User'
+  User: 'User',
+  Company: 'Company',
+  Contact: 'Contact',
+  Lead: 'Lead'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -97,6 +100,68 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const CompanyScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  name: 'name',
+  website: 'website',
+  industry: 'industry',
+  phone: 'phone',
+  email: 'email',
+  address: 'address',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]
+
+
+export const ContactScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  companyId: 'companyId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  jobTitle: 'jobTitle',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
+
+
+export const LeadScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  companyId: 'companyId',
+  contactId: 'contactId',
+  assignedToId: 'assignedToId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  companyName: 'companyName',
+  jobTitle: 'jobTitle',
+  status: 'status',
+  source: 'source',
+  estimatedValue: 'estimatedValue',
+  currency: 'currency',
+  notes: 'notes',
+  contactedAt: 'contactedAt',
+  qualifiedAt: 'qualifiedAt',
+  convertedAt: 'convertedAt',
+  lostAt: 'lostAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -111,4 +176,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
