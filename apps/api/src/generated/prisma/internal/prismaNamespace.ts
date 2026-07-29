@@ -894,7 +894,7 @@ export const LeadScalarFieldEnum = {
   estimatedValue: 'estimatedValue',
   currency: 'currency',
   notes: 'notes',
-  contactedAt: 'contactedAt',
+  contractedAt: 'contractedAt',
   qualifiedAt: 'qualifiedAt',
   convertedAt: 'convertedAt',
   lostAt: 'lostAt',

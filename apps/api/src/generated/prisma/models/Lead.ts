@@ -51,7 +51,7 @@ export type LeadMinAggregateOutputType = {
   estimatedValue: runtime.Decimal | null
   currency: string | null
   notes: string | null
-  contactedAt: Date | null
+  contractedAt: Date | null
   qualifiedAt: Date | null
   convertedAt: Date | null
   lostAt: Date | null
@@ -76,7 +76,7 @@ export type LeadMaxAggregateOutputType = {
   estimatedValue: runtime.Decimal | null
   currency: string | null
   notes: string | null
-  contactedAt: Date | null
+  contractedAt: Date | null
   qualifiedAt: Date | null
   convertedAt: Date | null
   lostAt: Date | null
@@ -101,7 +101,7 @@ export type LeadCountAggregateOutputType = {
   estimatedValue: number
   currency: number
   notes: number
-  contactedAt: number
+  contractedAt: number
   qualifiedAt: number
   convertedAt: number
   lostAt: number
@@ -136,7 +136,7 @@ export type LeadMinAggregateInputType = {
   estimatedValue?: true
   currency?: true
   notes?: true
-  contactedAt?: true
+  contractedAt?: true
   qualifiedAt?: true
   convertedAt?: true
   lostAt?: true
@@ -161,7 +161,7 @@ export type LeadMaxAggregateInputType = {
   estimatedValue?: true
   currency?: true
   notes?: true
-  contactedAt?: true
+  contractedAt?: true
   qualifiedAt?: true
   convertedAt?: true
   lostAt?: true
@@ -186,7 +186,7 @@ export type LeadCountAggregateInputType = {
   estimatedValue?: true
   currency?: true
   notes?: true
-  contactedAt?: true
+  contractedAt?: true
   qualifiedAt?: true
   convertedAt?: true
   lostAt?: true
@@ -298,7 +298,7 @@ export type LeadGroupByOutputType = {
   estimatedValue: runtime.Decimal | null
   currency: string | null
   notes: string | null
-  contactedAt: Date | null
+  contractedAt: Date | null
   qualifiedAt: Date | null
   convertedAt: Date | null
   lostAt: Date | null
@@ -346,7 +346,7 @@ export type LeadWhereInput = {
   estimatedValue?: Prisma.DecimalNullableFilter<"Lead"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.StringNullableFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableFilter<"Lead"> | string | null
-  contactedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
+  contractedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   qualifiedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   lostAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
@@ -375,7 +375,7 @@ export type LeadOrderByWithRelationInput = {
   estimatedValue?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
-  contactedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  contractedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   qualifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   convertedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   lostAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -407,7 +407,7 @@ export type LeadWhereUniqueInput = Prisma.AtLeast<{
   estimatedValue?: Prisma.DecimalNullableFilter<"Lead"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.StringNullableFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableFilter<"Lead"> | string | null
-  contactedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
+  contractedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   qualifiedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   lostAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
@@ -436,7 +436,7 @@ export type LeadOrderByWithAggregationInput = {
   estimatedValue?: Prisma.SortOrderInput | Prisma.SortOrder
   currency?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
-  contactedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  contractedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   qualifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   convertedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   lostAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -469,7 +469,7 @@ export type LeadScalarWhereWithAggregatesInput = {
   estimatedValue?: Prisma.DecimalNullableWithAggregatesFilter<"Lead"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"Lead"> | string | null
-  contactedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
+  contractedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
   qualifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
   lostAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Lead"> | Date | string | null
@@ -490,7 +490,7 @@ export type LeadCreateInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -519,7 +519,7 @@ export type LeadUncheckedCreateInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -540,7 +540,7 @@ export type LeadUpdateInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -569,7 +569,7 @@ export type LeadUncheckedUpdateInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -594,7 +594,7 @@ export type LeadCreateManyInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -615,7 +615,7 @@ export type LeadUpdateManyMutationInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -640,7 +640,7 @@ export type LeadUncheckedUpdateManyInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -675,7 +675,7 @@ export type LeadCountOrderByAggregateInput = {
   estimatedValue?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   notes?: Prisma.SortOrder
-  contactedAt?: Prisma.SortOrder
+  contractedAt?: Prisma.SortOrder
   qualifiedAt?: Prisma.SortOrder
   convertedAt?: Prisma.SortOrder
   lostAt?: Prisma.SortOrder
@@ -704,7 +704,7 @@ export type LeadMaxOrderByAggregateInput = {
   estimatedValue?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   notes?: Prisma.SortOrder
-  contactedAt?: Prisma.SortOrder
+  contractedAt?: Prisma.SortOrder
   qualifiedAt?: Prisma.SortOrder
   convertedAt?: Prisma.SortOrder
   lostAt?: Prisma.SortOrder
@@ -729,7 +729,7 @@ export type LeadMinOrderByAggregateInput = {
   estimatedValue?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   notes?: Prisma.SortOrder
-  contactedAt?: Prisma.SortOrder
+  contractedAt?: Prisma.SortOrder
   qualifiedAt?: Prisma.SortOrder
   convertedAt?: Prisma.SortOrder
   lostAt?: Prisma.SortOrder
@@ -942,7 +942,7 @@ export type LeadCreateWithoutWorkspaceInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -969,7 +969,7 @@ export type LeadUncheckedCreateWithoutWorkspaceInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1023,7 +1023,7 @@ export type LeadScalarWhereInput = {
   estimatedValue?: Prisma.DecimalNullableFilter<"Lead"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.StringNullableFilter<"Lead"> | string | null
   notes?: Prisma.StringNullableFilter<"Lead"> | string | null
-  contactedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
+  contractedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   qualifiedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   convertedAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
   lostAt?: Prisma.DateTimeNullableFilter<"Lead"> | Date | string | null
@@ -1044,7 +1044,7 @@ export type LeadCreateWithoutAssignedToInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1071,7 +1071,7 @@ export type LeadUncheckedCreateWithoutAssignedToInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1118,7 +1118,7 @@ export type LeadCreateWithoutCompanyInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1145,7 +1145,7 @@ export type LeadUncheckedCreateWithoutCompanyInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1192,7 +1192,7 @@ export type LeadCreateWithoutContactInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1219,7 +1219,7 @@ export type LeadUncheckedCreateWithoutContactInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1269,7 +1269,7 @@ export type LeadCreateManyWorkspaceInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1290,7 +1290,7 @@ export type LeadUpdateWithoutWorkspaceInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1317,7 +1317,7 @@ export type LeadUncheckedUpdateWithoutWorkspaceInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1341,7 +1341,7 @@ export type LeadUncheckedUpdateManyWithoutWorkspaceInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1365,7 +1365,7 @@ export type LeadCreateManyAssignedToInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1386,7 +1386,7 @@ export type LeadUpdateWithoutAssignedToInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1413,7 +1413,7 @@ export type LeadUncheckedUpdateWithoutAssignedToInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1437,7 +1437,7 @@ export type LeadUncheckedUpdateManyWithoutAssignedToInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1461,7 +1461,7 @@ export type LeadCreateManyCompanyInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1482,7 +1482,7 @@ export type LeadUpdateWithoutCompanyInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1509,7 +1509,7 @@ export type LeadUncheckedUpdateWithoutCompanyInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1533,7 +1533,7 @@ export type LeadUncheckedUpdateManyWithoutCompanyInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1557,7 +1557,7 @@ export type LeadCreateManyContactInput = {
   estimatedValue?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: string | null
   notes?: string | null
-  contactedAt?: Date | string | null
+  contractedAt?: Date | string | null
   qualifiedAt?: Date | string | null
   convertedAt?: Date | string | null
   lostAt?: Date | string | null
@@ -1578,7 +1578,7 @@ export type LeadUpdateWithoutContactInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1605,7 +1605,7 @@ export type LeadUncheckedUpdateWithoutContactInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1629,7 +1629,7 @@ export type LeadUncheckedUpdateManyWithoutContactInput = {
   estimatedValue?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  contactedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  contractedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   qualifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   convertedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lostAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1656,7 +1656,7 @@ export type LeadSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   estimatedValue?: boolean
   currency?: boolean
   notes?: boolean
-  contactedAt?: boolean
+  contractedAt?: boolean
   qualifiedAt?: boolean
   convertedAt?: boolean
   lostAt?: boolean
@@ -1685,7 +1685,7 @@ export type LeadSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   estimatedValue?: boolean
   currency?: boolean
   notes?: boolean
-  contactedAt?: boolean
+  contractedAt?: boolean
   qualifiedAt?: boolean
   convertedAt?: boolean
   lostAt?: boolean
@@ -1714,7 +1714,7 @@ export type LeadSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   estimatedValue?: boolean
   currency?: boolean
   notes?: boolean
-  contactedAt?: boolean
+  contractedAt?: boolean
   qualifiedAt?: boolean
   convertedAt?: boolean
   lostAt?: boolean
@@ -1743,7 +1743,7 @@ export type LeadSelectScalar = {
   estimatedValue?: boolean
   currency?: boolean
   notes?: boolean
-  contactedAt?: boolean
+  contractedAt?: boolean
   qualifiedAt?: boolean
   convertedAt?: boolean
   lostAt?: boolean
@@ -1751,7 +1751,7 @@ export type LeadSelectScalar = {
   updatedAt?: boolean
 }
 
-export type LeadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "companyId" | "contactId" | "assignedToId" | "firstName" | "lastName" | "email" | "phone" | "companyName" | "jobTitle" | "status" | "source" | "estimatedValue" | "currency" | "notes" | "contactedAt" | "qualifiedAt" | "convertedAt" | "lostAt" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
+export type LeadOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "companyId" | "contactId" | "assignedToId" | "firstName" | "lastName" | "email" | "phone" | "companyName" | "jobTitle" | "status" | "source" | "estimatedValue" | "currency" | "notes" | "contractedAt" | "qualifiedAt" | "convertedAt" | "lostAt" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
 export type LeadInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   company?: boolean | Prisma.Lead$companyArgs<ExtArgs>
@@ -1796,7 +1796,7 @@ export type $LeadPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     estimatedValue: runtime.Decimal | null
     currency: string | null
     notes: string | null
-    contactedAt: Date | null
+    contractedAt: Date | null
     qualifiedAt: Date | null
     convertedAt: Date | null
     lostAt: Date | null
@@ -2245,7 +2245,7 @@ export interface LeadFieldRefs {
   readonly estimatedValue: Prisma.FieldRef<"Lead", 'Decimal'>
   readonly currency: Prisma.FieldRef<"Lead", 'String'>
   readonly notes: Prisma.FieldRef<"Lead", 'String'>
-  readonly contactedAt: Prisma.FieldRef<"Lead", 'DateTime'>
+  readonly contractedAt: Prisma.FieldRef<"Lead", 'DateTime'>
   readonly qualifiedAt: Prisma.FieldRef<"Lead", 'DateTime'>
   readonly convertedAt: Prisma.FieldRef<"Lead", 'DateTime'>
   readonly lostAt: Prisma.FieldRef<"Lead", 'DateTime'>
