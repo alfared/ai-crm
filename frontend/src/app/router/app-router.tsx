@@ -6,6 +6,7 @@ import { DashboardPage } from "../../pages/dashboard/dashboard-page";
 import { ResourcePlaceholderPage } from "../../pages/dashboard/resource-placeholder-page";
 import { NotFoundPage } from "../../pages/not-found/not-found-page";
 import { DashboardLayout } from "../../widgets/layout/dashboard-layout";
+import { CompaniesPage } from "../../pages/companies/companies-page";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/companies",
-        element: <ResourcePlaceholderPage title="Companies" />,
+        element: <CompaniesPage />,
       },
       {
         path: "/contacts",
