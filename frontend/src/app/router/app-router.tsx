@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 import { LoginPage } from "../../pages/auth/login-page";
-import { RegisterPage } from "../../pages/auth/register-page";
+import { RegisterPage } from "../../pages/register-page";
 import { DashboardPage } from "../../pages/dashboard/dashboard-page";
 import { ResourcePlaceholderPage } from "../../pages/dashboard/resource-placeholder-page";
 import { NotFoundPage } from "../../pages/not-found/not-found-page";

@@ -15,4 +15,15 @@ export type AuthResponse = {
     lastName: string;
     role: "OWNER" | "ADMIN" | "MANAGER" | "MEMBER";
   };
+  workspace: {
+    id: string;
+    name: string;
+    slug: string;
+  };
 };
+
+export async function login(payload: LoginRequest): Promise<AuthResponse> {
+  const response = await apiClient.post<AuthResponse>("/auth/login", payload);
+
+  return response.data;
+}
