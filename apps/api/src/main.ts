@@ -6,7 +6,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    snapshot: process.env.NODE_ENV !== 'production',
+  });
   const configService = app.get(ConfigService);
 
   app.setGlobalPrefix('api');
