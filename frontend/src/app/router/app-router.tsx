@@ -8,6 +8,7 @@ import { ResourcePlaceholderPage } from "../../pages/dashboard/resource-placehol
 import { NotFoundPage } from "../../pages/not-found/not-found-page";
 import { DashboardLayout } from "../../widgets/layout/dashboard-layout";
 import { ProtectedRoute } from "./protected-route";
+import { ContactsPage } from "../../pages/contacts/contacts-page";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/contacts",
-            element: <ResourcePlaceholderPage title="Contacts" />,
+            element: <ContactsPage />,
           },
           {
             path: "/leads",
