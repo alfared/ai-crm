@@ -44,3 +44,26 @@ export const LeadSource = {
 } as const
 
 export type LeadSource = (typeof LeadSource)[keyof typeof LeadSource]
+
+
+export const KnowledgeDocumentStatus = {
+  PENDING: 'PENDING',
+  INDEXING: 'INDEXING',
+  READY: 'READY',
+  FAILED: 'FAILED'
+} as const
+
+export type KnowledgeDocumentStatus = (typeof KnowledgeDocumentStatus)[keyof typeof KnowledgeDocumentStatus]
+
+
+export const KnowledgeSourceType = {
+  MANUAL: 'MANUAL',
+  COMPANY: 'COMPANY',
+  CONTACT: 'CONTACT',
+  LEAD: 'LEAD',
+  NOTE: 'NOTE',
+  EMAIL: 'EMAIL',
+  FILE: 'FILE'
+} as const
+
+export type KnowledgeSourceType = (typeof KnowledgeSourceType)[keyof typeof KnowledgeSourceType]

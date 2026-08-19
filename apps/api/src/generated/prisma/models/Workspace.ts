@@ -186,6 +186,8 @@ export type WorkspaceWhereInput = {
   companies?: Prisma.CompanyListRelationFilter
   contacts?: Prisma.ContactListRelationFilter
   leads?: Prisma.LeadListRelationFilter
+  knowledgeDocuments?: Prisma.KnowledgeDocumentListRelationFilter
+  knowledgeChunks?: Prisma.KnowledgeChunkListRelationFilter
 }
 
 export type WorkspaceOrderByWithRelationInput = {
@@ -198,6 +200,8 @@ export type WorkspaceOrderByWithRelationInput = {
   companies?: Prisma.CompanyOrderByRelationAggregateInput
   contacts?: Prisma.ContactOrderByRelationAggregateInput
   leads?: Prisma.LeadOrderByRelationAggregateInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentOrderByRelationAggregateInput
+  knowledgeChunks?: Prisma.KnowledgeChunkOrderByRelationAggregateInput
 }
 
 export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
@@ -213,6 +217,8 @@ export type WorkspaceWhereUniqueInput = Prisma.AtLeast<{
   companies?: Prisma.CompanyListRelationFilter
   contacts?: Prisma.ContactListRelationFilter
   leads?: Prisma.LeadListRelationFilter
+  knowledgeDocuments?: Prisma.KnowledgeDocumentListRelationFilter
+  knowledgeChunks?: Prisma.KnowledgeChunkListRelationFilter
 }, "id" | "slug">
 
 export type WorkspaceOrderByWithAggregationInput = {
@@ -247,6 +253,8 @@ export type WorkspaceCreateInput = {
   companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateInput = {
@@ -259,6 +267,8 @@ export type WorkspaceUncheckedCreateInput = {
   companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUpdateInput = {
@@ -271,6 +281,8 @@ export type WorkspaceUpdateInput = {
   companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateInput = {
@@ -283,6 +295,8 @@ export type WorkspaceUncheckedUpdateInput = {
   companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateManyInput = {
@@ -402,6 +416,34 @@ export type WorkspaceUpdateOneRequiredWithoutLeadsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutLeadsInput, Prisma.WorkspaceUpdateWithoutLeadsInput>, Prisma.WorkspaceUncheckedUpdateWithoutLeadsInput>
 }
 
+export type WorkspaceCreateNestedOneWithoutKnowledgeDocumentsInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeDocumentsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutKnowledgeDocumentsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutKnowledgeDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeDocumentsInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutKnowledgeDocumentsInput
+  upsert?: Prisma.WorkspaceUpsertWithoutKnowledgeDocumentsInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutKnowledgeDocumentsInput, Prisma.WorkspaceUpdateWithoutKnowledgeDocumentsInput>, Prisma.WorkspaceUncheckedUpdateWithoutKnowledgeDocumentsInput>
+}
+
+export type WorkspaceCreateNestedOneWithoutKnowledgeChunksInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeChunksInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeChunksInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutKnowledgeChunksInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+}
+
+export type WorkspaceUpdateOneRequiredWithoutKnowledgeChunksNestedInput = {
+  create?: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeChunksInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeChunksInput>
+  connectOrCreate?: Prisma.WorkspaceCreateOrConnectWithoutKnowledgeChunksInput
+  upsert?: Prisma.WorkspaceUpsertWithoutKnowledgeChunksInput
+  connect?: Prisma.WorkspaceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.WorkspaceUpdateToOneWithWhereWithoutKnowledgeChunksInput, Prisma.WorkspaceUpdateWithoutKnowledgeChunksInput>, Prisma.WorkspaceUncheckedUpdateWithoutKnowledgeChunksInput>
+}
+
 export type WorkspaceCreateWithoutUsersInput = {
   id?: string
   name: string
@@ -411,6 +453,8 @@ export type WorkspaceCreateWithoutUsersInput = {
   companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutUsersInput = {
@@ -422,6 +466,8 @@ export type WorkspaceUncheckedCreateWithoutUsersInput = {
   companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutUsersInput = {
@@ -449,6 +495,8 @@ export type WorkspaceUpdateWithoutUsersInput = {
   companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutUsersInput = {
@@ -460,6 +508,8 @@ export type WorkspaceUncheckedUpdateWithoutUsersInput = {
   companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutCompaniesInput = {
@@ -471,6 +521,8 @@ export type WorkspaceCreateWithoutCompaniesInput = {
   users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutCompaniesInput = {
@@ -482,6 +534,8 @@ export type WorkspaceUncheckedCreateWithoutCompaniesInput = {
   users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutCompaniesInput = {
@@ -509,6 +563,8 @@ export type WorkspaceUpdateWithoutCompaniesInput = {
   users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutCompaniesInput = {
@@ -520,6 +576,8 @@ export type WorkspaceUncheckedUpdateWithoutCompaniesInput = {
   users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutContactsInput = {
@@ -531,6 +589,8 @@ export type WorkspaceCreateWithoutContactsInput = {
   users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
   companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutContactsInput = {
@@ -542,6 +602,8 @@ export type WorkspaceUncheckedCreateWithoutContactsInput = {
   users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
   companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
   leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutContactsInput = {
@@ -569,6 +631,8 @@ export type WorkspaceUpdateWithoutContactsInput = {
   users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
   companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutContactsInput = {
@@ -580,6 +644,8 @@ export type WorkspaceUncheckedUpdateWithoutContactsInput = {
   users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
   companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
   leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceCreateWithoutLeadsInput = {
@@ -591,6 +657,8 @@ export type WorkspaceCreateWithoutLeadsInput = {
   users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
   companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceUncheckedCreateWithoutLeadsInput = {
@@ -602,6 +670,8 @@ export type WorkspaceUncheckedCreateWithoutLeadsInput = {
   users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
   companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
   contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedCreateNestedManyWithoutWorkspaceInput
 }
 
 export type WorkspaceCreateOrConnectWithoutLeadsInput = {
@@ -629,6 +699,8 @@ export type WorkspaceUpdateWithoutLeadsInput = {
   users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
   companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUpdateManyWithoutWorkspaceNestedInput
 }
 
 export type WorkspaceUncheckedUpdateWithoutLeadsInput = {
@@ -640,6 +712,144 @@ export type WorkspaceUncheckedUpdateWithoutLeadsInput = {
   users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
   companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
   contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutKnowledgeDocumentsInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutKnowledgeDocumentsInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutKnowledgeDocumentsInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeDocumentsInput>
+}
+
+export type WorkspaceUpsertWithoutKnowledgeDocumentsInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutKnowledgeDocumentsInput, Prisma.WorkspaceUncheckedUpdateWithoutKnowledgeDocumentsInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeDocumentsInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeDocumentsInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutKnowledgeDocumentsInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutKnowledgeDocumentsInput, Prisma.WorkspaceUncheckedUpdateWithoutKnowledgeDocumentsInput>
+}
+
+export type WorkspaceUpdateWithoutKnowledgeDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutKnowledgeDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeChunks?: Prisma.KnowledgeChunkUncheckedUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceCreateWithoutKnowledgeChunksInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceUncheckedCreateWithoutKnowledgeChunksInput = {
+  id?: string
+  name: string
+  slug: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  users?: Prisma.UserUncheckedCreateNestedManyWithoutWorkspaceInput
+  companies?: Prisma.CompanyUncheckedCreateNestedManyWithoutWorkspaceInput
+  contacts?: Prisma.ContactUncheckedCreateNestedManyWithoutWorkspaceInput
+  leads?: Prisma.LeadUncheckedCreateNestedManyWithoutWorkspaceInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedCreateNestedManyWithoutWorkspaceInput
+}
+
+export type WorkspaceCreateOrConnectWithoutKnowledgeChunksInput = {
+  where: Prisma.WorkspaceWhereUniqueInput
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeChunksInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeChunksInput>
+}
+
+export type WorkspaceUpsertWithoutKnowledgeChunksInput = {
+  update: Prisma.XOR<Prisma.WorkspaceUpdateWithoutKnowledgeChunksInput, Prisma.WorkspaceUncheckedUpdateWithoutKnowledgeChunksInput>
+  create: Prisma.XOR<Prisma.WorkspaceCreateWithoutKnowledgeChunksInput, Prisma.WorkspaceUncheckedCreateWithoutKnowledgeChunksInput>
+  where?: Prisma.WorkspaceWhereInput
+}
+
+export type WorkspaceUpdateToOneWithWhereWithoutKnowledgeChunksInput = {
+  where?: Prisma.WorkspaceWhereInput
+  data: Prisma.XOR<Prisma.WorkspaceUpdateWithoutKnowledgeChunksInput, Prisma.WorkspaceUncheckedUpdateWithoutKnowledgeChunksInput>
+}
+
+export type WorkspaceUpdateWithoutKnowledgeChunksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUpdateManyWithoutWorkspaceNestedInput
+}
+
+export type WorkspaceUncheckedUpdateWithoutKnowledgeChunksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  users?: Prisma.UserUncheckedUpdateManyWithoutWorkspaceNestedInput
+  companies?: Prisma.CompanyUncheckedUpdateManyWithoutWorkspaceNestedInput
+  contacts?: Prisma.ContactUncheckedUpdateManyWithoutWorkspaceNestedInput
+  leads?: Prisma.LeadUncheckedUpdateManyWithoutWorkspaceNestedInput
+  knowledgeDocuments?: Prisma.KnowledgeDocumentUncheckedUpdateManyWithoutWorkspaceNestedInput
 }
 
 
@@ -652,6 +862,8 @@ export type WorkspaceCountOutputType = {
   companies: number
   contacts: number
   leads: number
+  knowledgeDocuments: number
+  knowledgeChunks: number
 }
 
 export type WorkspaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -659,6 +871,8 @@ export type WorkspaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensi
   companies?: boolean | WorkspaceCountOutputTypeCountCompaniesArgs
   contacts?: boolean | WorkspaceCountOutputTypeCountContactsArgs
   leads?: boolean | WorkspaceCountOutputTypeCountLeadsArgs
+  knowledgeDocuments?: boolean | WorkspaceCountOutputTypeCountKnowledgeDocumentsArgs
+  knowledgeChunks?: boolean | WorkspaceCountOutputTypeCountKnowledgeChunksArgs
 }
 
 /**
@@ -699,6 +913,20 @@ export type WorkspaceCountOutputTypeCountLeadsArgs<ExtArgs extends runtime.Types
   where?: Prisma.LeadWhereInput
 }
 
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountKnowledgeDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.KnowledgeDocumentWhereInput
+}
+
+/**
+ * WorkspaceCountOutputType without action
+ */
+export type WorkspaceCountOutputTypeCountKnowledgeChunksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.KnowledgeChunkWhereInput
+}
+
 
 export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -710,6 +938,8 @@ export type WorkspaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   companies?: boolean | Prisma.Workspace$companiesArgs<ExtArgs>
   contacts?: boolean | Prisma.Workspace$contactsArgs<ExtArgs>
   leads?: boolean | Prisma.Workspace$leadsArgs<ExtArgs>
+  knowledgeDocuments?: boolean | Prisma.Workspace$knowledgeDocumentsArgs<ExtArgs>
+  knowledgeChunks?: boolean | Prisma.Workspace$knowledgeChunksArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["workspace"]>
 
@@ -743,6 +973,8 @@ export type WorkspaceInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   companies?: boolean | Prisma.Workspace$companiesArgs<ExtArgs>
   contacts?: boolean | Prisma.Workspace$contactsArgs<ExtArgs>
   leads?: boolean | Prisma.Workspace$leadsArgs<ExtArgs>
+  knowledgeDocuments?: boolean | Prisma.Workspace$knowledgeDocumentsArgs<ExtArgs>
+  knowledgeChunks?: boolean | Prisma.Workspace$knowledgeChunksArgs<ExtArgs>
   _count?: boolean | Prisma.WorkspaceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type WorkspaceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -755,6 +987,8 @@ export type $WorkspacePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     companies: Prisma.$CompanyPayload<ExtArgs>[]
     contacts: Prisma.$ContactPayload<ExtArgs>[]
     leads: Prisma.$LeadPayload<ExtArgs>[]
+    knowledgeDocuments: Prisma.$KnowledgeDocumentPayload<ExtArgs>[]
+    knowledgeChunks: Prisma.$KnowledgeChunkPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1160,6 +1394,8 @@ export interface Prisma__WorkspaceClient<T, Null = never, ExtArgs extends runtim
   companies<T extends Prisma.Workspace$companiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$companiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CompanyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   contacts<T extends Prisma.Workspace$contactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$contactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   leads<T extends Prisma.Workspace$leadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$leadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  knowledgeDocuments<T extends Prisma.Workspace$knowledgeDocumentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$knowledgeDocumentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KnowledgeDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  knowledgeChunks<T extends Prisma.Workspace$knowledgeChunksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Workspace$knowledgeChunksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$KnowledgeChunkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1680,6 +1916,54 @@ export type Workspace$leadsArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.LeadScalarFieldEnum | Prisma.LeadScalarFieldEnum[]
+}
+
+/**
+ * Workspace.knowledgeDocuments
+ */
+export type Workspace$knowledgeDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the KnowledgeDocument
+   */
+  select?: Prisma.KnowledgeDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the KnowledgeDocument
+   */
+  omit?: Prisma.KnowledgeDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.KnowledgeDocumentInclude<ExtArgs> | null
+  where?: Prisma.KnowledgeDocumentWhereInput
+  orderBy?: Prisma.KnowledgeDocumentOrderByWithRelationInput | Prisma.KnowledgeDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.KnowledgeDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.KnowledgeDocumentScalarFieldEnum | Prisma.KnowledgeDocumentScalarFieldEnum[]
+}
+
+/**
+ * Workspace.knowledgeChunks
+ */
+export type Workspace$knowledgeChunksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the KnowledgeChunk
+   */
+  select?: Prisma.KnowledgeChunkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the KnowledgeChunk
+   */
+  omit?: Prisma.KnowledgeChunkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.KnowledgeChunkInclude<ExtArgs> | null
+  where?: Prisma.KnowledgeChunkWhereInput
+  orderBy?: Prisma.KnowledgeChunkOrderByWithRelationInput | Prisma.KnowledgeChunkOrderByWithRelationInput[]
+  cursor?: Prisma.KnowledgeChunkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.KnowledgeChunkScalarFieldEnum | Prisma.KnowledgeChunkScalarFieldEnum[]
 }
 
 /**
