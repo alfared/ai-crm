@@ -62,8 +62,3 @@ ALTER TABLE "KnowledgeChunk" ADD CONSTRAINT "KnowledgeChunk_workspaceId_fkey" FO
 
 -- AddForeignKey
 ALTER TABLE "KnowledgeChunk" ADD CONSTRAINT "KnowledgeChunk_documentId_fkey" FOREIGN KEY ("documentId") REFERENCES "KnowledgeDocument"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
-CREATE EXTENSION IF NOT EXISTS vector;
-
-ALTER TABLE "KnowledgeChunk"
-ADD COLUMN "embedding" vector(1536);

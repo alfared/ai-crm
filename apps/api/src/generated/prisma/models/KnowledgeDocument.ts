@@ -30,6 +30,9 @@ export type KnowledgeDocumentMinAggregateOutputType = {
   title: string | null
   sourceType: $Enums.KnowledgeSourceType | null
   sourceId: string | null
+  companyId: string | null
+  contactId: string | null
+  leadId: string | null
   content: string | null
   status: $Enums.KnowledgeDocumentStatus | null
   error: string | null
@@ -43,6 +46,9 @@ export type KnowledgeDocumentMaxAggregateOutputType = {
   title: string | null
   sourceType: $Enums.KnowledgeSourceType | null
   sourceId: string | null
+  companyId: string | null
+  contactId: string | null
+  leadId: string | null
   content: string | null
   status: $Enums.KnowledgeDocumentStatus | null
   error: string | null
@@ -56,6 +62,9 @@ export type KnowledgeDocumentCountAggregateOutputType = {
   title: number
   sourceType: number
   sourceId: number
+  companyId: number
+  contactId: number
+  leadId: number
   content: number
   status: number
   error: number
@@ -71,6 +80,9 @@ export type KnowledgeDocumentMinAggregateInputType = {
   title?: true
   sourceType?: true
   sourceId?: true
+  companyId?: true
+  contactId?: true
+  leadId?: true
   content?: true
   status?: true
   error?: true
@@ -84,6 +96,9 @@ export type KnowledgeDocumentMaxAggregateInputType = {
   title?: true
   sourceType?: true
   sourceId?: true
+  companyId?: true
+  contactId?: true
+  leadId?: true
   content?: true
   status?: true
   error?: true
@@ -97,6 +112,9 @@ export type KnowledgeDocumentCountAggregateInputType = {
   title?: true
   sourceType?: true
   sourceId?: true
+  companyId?: true
+  contactId?: true
+  leadId?: true
   content?: true
   status?: true
   error?: true
@@ -183,6 +201,9 @@ export type KnowledgeDocumentGroupByOutputType = {
   title: string
   sourceType: $Enums.KnowledgeSourceType
   sourceId: string | null
+  companyId: string | null
+  contactId: string | null
+  leadId: string | null
   content: string | null
   status: $Enums.KnowledgeDocumentStatus
   error: string | null
@@ -217,6 +238,9 @@ export type KnowledgeDocumentWhereInput = {
   title?: Prisma.StringFilter<"KnowledgeDocument"> | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFilter<"KnowledgeDocument"> | $Enums.KnowledgeSourceType
   sourceId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  companyId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  contactId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  leadId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
   content?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFilter<"KnowledgeDocument"> | $Enums.KnowledgeDocumentStatus
   error?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
@@ -232,6 +256,9 @@ export type KnowledgeDocumentOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   sourceType?: Prisma.SortOrder
   sourceId?: Prisma.SortOrderInput | Prisma.SortOrder
+  companyId?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactId?: Prisma.SortOrderInput | Prisma.SortOrder
+  leadId?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   error?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -243,6 +270,7 @@ export type KnowledgeDocumentOrderByWithRelationInput = {
 
 export type KnowledgeDocumentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  workspaceId_sourceType_sourceId?: Prisma.KnowledgeDocumentWorkspaceIdSourceTypeSourceIdCompoundUniqueInput
   AND?: Prisma.KnowledgeDocumentWhereInput | Prisma.KnowledgeDocumentWhereInput[]
   OR?: Prisma.KnowledgeDocumentWhereInput[]
   NOT?: Prisma.KnowledgeDocumentWhereInput | Prisma.KnowledgeDocumentWhereInput[]
@@ -250,6 +278,9 @@ export type KnowledgeDocumentWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"KnowledgeDocument"> | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFilter<"KnowledgeDocument"> | $Enums.KnowledgeSourceType
   sourceId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  companyId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  contactId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  leadId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
   content?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFilter<"KnowledgeDocument"> | $Enums.KnowledgeDocumentStatus
   error?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
@@ -257,7 +288,7 @@ export type KnowledgeDocumentWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"KnowledgeDocument"> | Date | string
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
   chunks?: Prisma.KnowledgeChunkListRelationFilter
-}, "id">
+}, "id" | "workspaceId_sourceType_sourceId">
 
 export type KnowledgeDocumentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -265,6 +296,9 @@ export type KnowledgeDocumentOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   sourceType?: Prisma.SortOrder
   sourceId?: Prisma.SortOrderInput | Prisma.SortOrder
+  companyId?: Prisma.SortOrderInput | Prisma.SortOrder
+  contactId?: Prisma.SortOrderInput | Prisma.SortOrder
+  leadId?: Prisma.SortOrderInput | Prisma.SortOrder
   content?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   error?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -284,6 +318,9 @@ export type KnowledgeDocumentScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"KnowledgeDocument"> | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeWithAggregatesFilter<"KnowledgeDocument"> | $Enums.KnowledgeSourceType
   sourceId?: Prisma.StringNullableWithAggregatesFilter<"KnowledgeDocument"> | string | null
+  companyId?: Prisma.StringNullableWithAggregatesFilter<"KnowledgeDocument"> | string | null
+  contactId?: Prisma.StringNullableWithAggregatesFilter<"KnowledgeDocument"> | string | null
+  leadId?: Prisma.StringNullableWithAggregatesFilter<"KnowledgeDocument"> | string | null
   content?: Prisma.StringNullableWithAggregatesFilter<"KnowledgeDocument"> | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusWithAggregatesFilter<"KnowledgeDocument"> | $Enums.KnowledgeDocumentStatus
   error?: Prisma.StringNullableWithAggregatesFilter<"KnowledgeDocument"> | string | null
@@ -296,6 +333,9 @@ export type KnowledgeDocumentCreateInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -311,6 +351,9 @@ export type KnowledgeDocumentUncheckedCreateInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -324,6 +367,9 @@ export type KnowledgeDocumentUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -339,6 +385,9 @@ export type KnowledgeDocumentUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -353,6 +402,9 @@ export type KnowledgeDocumentCreateManyInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -365,6 +417,9 @@ export type KnowledgeDocumentUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -378,6 +433,9 @@ export type KnowledgeDocumentUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -395,12 +453,21 @@ export type KnowledgeDocumentOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type KnowledgeDocumentWorkspaceIdSourceTypeSourceIdCompoundUniqueInput = {
+  workspaceId: string
+  sourceType: $Enums.KnowledgeSourceType
+  sourceId: string
+}
+
 export type KnowledgeDocumentCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   workspaceId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   sourceType?: Prisma.SortOrder
   sourceId?: Prisma.SortOrder
+  companyId?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
+  leadId?: Prisma.SortOrder
   content?: Prisma.SortOrder
   status?: Prisma.SortOrder
   error?: Prisma.SortOrder
@@ -414,6 +481,9 @@ export type KnowledgeDocumentMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   sourceType?: Prisma.SortOrder
   sourceId?: Prisma.SortOrder
+  companyId?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
+  leadId?: Prisma.SortOrder
   content?: Prisma.SortOrder
   status?: Prisma.SortOrder
   error?: Prisma.SortOrder
@@ -427,6 +497,9 @@ export type KnowledgeDocumentMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   sourceType?: Prisma.SortOrder
   sourceId?: Prisma.SortOrder
+  companyId?: Prisma.SortOrder
+  contactId?: Prisma.SortOrder
+  leadId?: Prisma.SortOrder
   content?: Prisma.SortOrder
   status?: Prisma.SortOrder
   error?: Prisma.SortOrder
@@ -508,6 +581,9 @@ export type KnowledgeDocumentCreateWithoutWorkspaceInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -521,6 +597,9 @@ export type KnowledgeDocumentUncheckedCreateWithoutWorkspaceInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -564,6 +643,9 @@ export type KnowledgeDocumentScalarWhereInput = {
   title?: Prisma.StringFilter<"KnowledgeDocument"> | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFilter<"KnowledgeDocument"> | $Enums.KnowledgeSourceType
   sourceId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  companyId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  contactId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
+  leadId?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
   content?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFilter<"KnowledgeDocument"> | $Enums.KnowledgeDocumentStatus
   error?: Prisma.StringNullableFilter<"KnowledgeDocument"> | string | null
@@ -576,6 +658,9 @@ export type KnowledgeDocumentCreateWithoutChunksInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -590,6 +675,9 @@ export type KnowledgeDocumentUncheckedCreateWithoutChunksInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -618,6 +706,9 @@ export type KnowledgeDocumentUpdateWithoutChunksInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -632,6 +723,9 @@ export type KnowledgeDocumentUncheckedUpdateWithoutChunksInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -644,6 +738,9 @@ export type KnowledgeDocumentCreateManyWorkspaceInput = {
   title: string
   sourceType?: $Enums.KnowledgeSourceType
   sourceId?: string | null
+  companyId?: string | null
+  contactId?: string | null
+  leadId?: string | null
   content?: string | null
   status?: $Enums.KnowledgeDocumentStatus
   error?: string | null
@@ -656,6 +753,9 @@ export type KnowledgeDocumentUpdateWithoutWorkspaceInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -669,6 +769,9 @@ export type KnowledgeDocumentUncheckedUpdateWithoutWorkspaceInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -682,6 +785,9 @@ export type KnowledgeDocumentUncheckedUpdateManyWithoutWorkspaceInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   sourceType?: Prisma.EnumKnowledgeSourceTypeFieldUpdateOperationsInput | $Enums.KnowledgeSourceType
   sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   content?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumKnowledgeDocumentStatusFieldUpdateOperationsInput | $Enums.KnowledgeDocumentStatus
   error?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -726,6 +832,9 @@ export type KnowledgeDocumentSelect<ExtArgs extends runtime.Types.Extensions.Int
   title?: boolean
   sourceType?: boolean
   sourceId?: boolean
+  companyId?: boolean
+  contactId?: boolean
+  leadId?: boolean
   content?: boolean
   status?: boolean
   error?: boolean
@@ -742,6 +851,9 @@ export type KnowledgeDocumentSelectCreateManyAndReturn<ExtArgs extends runtime.T
   title?: boolean
   sourceType?: boolean
   sourceId?: boolean
+  companyId?: boolean
+  contactId?: boolean
+  leadId?: boolean
   content?: boolean
   status?: boolean
   error?: boolean
@@ -756,6 +868,9 @@ export type KnowledgeDocumentSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   title?: boolean
   sourceType?: boolean
   sourceId?: boolean
+  companyId?: boolean
+  contactId?: boolean
+  leadId?: boolean
   content?: boolean
   status?: boolean
   error?: boolean
@@ -770,6 +885,9 @@ export type KnowledgeDocumentSelectScalar = {
   title?: boolean
   sourceType?: boolean
   sourceId?: boolean
+  companyId?: boolean
+  contactId?: boolean
+  leadId?: boolean
   content?: boolean
   status?: boolean
   error?: boolean
@@ -777,7 +895,7 @@ export type KnowledgeDocumentSelectScalar = {
   updatedAt?: boolean
 }
 
-export type KnowledgeDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "title" | "sourceType" | "sourceId" | "content" | "status" | "error" | "createdAt" | "updatedAt", ExtArgs["result"]["knowledgeDocument"]>
+export type KnowledgeDocumentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "title" | "sourceType" | "sourceId" | "companyId" | "contactId" | "leadId" | "content" | "status" | "error" | "createdAt" | "updatedAt", ExtArgs["result"]["knowledgeDocument"]>
 export type KnowledgeDocumentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   chunks?: boolean | Prisma.KnowledgeDocument$chunksArgs<ExtArgs>
@@ -802,6 +920,9 @@ export type $KnowledgeDocumentPayload<ExtArgs extends runtime.Types.Extensions.I
     title: string
     sourceType: $Enums.KnowledgeSourceType
     sourceId: string | null
+    companyId: string | null
+    contactId: string | null
+    leadId: string | null
     content: string | null
     status: $Enums.KnowledgeDocumentStatus
     error: string | null
@@ -1237,6 +1358,9 @@ export interface KnowledgeDocumentFieldRefs {
   readonly title: Prisma.FieldRef<"KnowledgeDocument", 'String'>
   readonly sourceType: Prisma.FieldRef<"KnowledgeDocument", 'KnowledgeSourceType'>
   readonly sourceId: Prisma.FieldRef<"KnowledgeDocument", 'String'>
+  readonly companyId: Prisma.FieldRef<"KnowledgeDocument", 'String'>
+  readonly contactId: Prisma.FieldRef<"KnowledgeDocument", 'String'>
+  readonly leadId: Prisma.FieldRef<"KnowledgeDocument", 'String'>
   readonly content: Prisma.FieldRef<"KnowledgeDocument", 'String'>
   readonly status: Prisma.FieldRef<"KnowledgeDocument", 'KnowledgeDocumentStatus'>
   readonly error: Prisma.FieldRef<"KnowledgeDocument", 'String'>

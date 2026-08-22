@@ -177,24 +177,34 @@ model Lead {
 }
 
 model KnowledgeDocument {
-  id          String                  @id @default(uuid())
+  id          String @id @default(uuid())
   workspaceId String
-  title       String
-  sourceType  KnowledgeSourceType     @default(MANUAL)
-  sourceId    String?
-  content     String?
-  status      KnowledgeDocumentStatus @default(PENDING)
-  error       String?
-  createdAt   DateTime                @default(now())
-  updatedAt   DateTime                @updatedAt
+
+  title      String
+  sourceType KnowledgeSourceType @default(MANUAL)
+  sourceId   String?
+
+  companyId String?
+  contactId String?
+  leadId    String?
+
+  content String?
+  status  KnowledgeDocumentStatus @default(PENDING)
+  error   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   workspace Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   chunks    KnowledgeChunk[]
 
+  @@unique([workspaceId, sourceType, sourceId])
   @@index([workspaceId])
   @@index([workspaceId, sourceType])
   @@index([workspaceId, status])
-  @@index([sourceId])
+  @@index([companyId])
+  @@index([contactId])
+  @@index([leadId])
 }
 
 model KnowledgeChunk {
