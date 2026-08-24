@@ -36,6 +36,23 @@ enum LeadSource {
   OTHER
 }
 
+enum KnowledgeDocumentStatus {
+  PENDING
+  INDEXING
+  READY
+  FAILED
+}
+
+enum KnowledgeSourceType {
+  MANUAL
+  COMPANY
+  CONTACT
+  LEAD
+  NOTE
+  EMAIL
+  FILE
+}
+
 model Workspace {
   id        String   @id @default(uuid())
   name      String
@@ -43,10 +60,12 @@ model Workspace {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  users     User[]
-  companies Company[]
-  contacts  Contact[]
-  leads     Lead[]
+  users              User[]
+  companies          Company[]
+  contacts           Contact[]
+  leads              Lead[]
+  knowledgeDocuments KnowledgeDocument[]
+  knowledgeChunks    KnowledgeChunk[]
 }
 
 model User {
@@ -132,9 +151,9 @@ model Lead {
   notes          String?
 
   contractedAt DateTime?
-  qualifiedAt DateTime?
-  convertedAt DateTime?
-  lostAt      DateTime?
+  qualifiedAt  DateTime?
+  convertedAt  DateTime?
+  lostAt       DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -155,4 +174,52 @@ model Lead {
   @@index([contactId])
   @@index([assignedToId])
   @@index([email])
+}
+
+model KnowledgeDocument {
+  id          String @id @default(uuid())
+  workspaceId String
+
+  title      String
+  sourceType KnowledgeSourceType @default(MANUAL)
+  sourceId   String?
+
+  companyId String?
+  contactId String?
+  leadId    String?
+
+  content String?
+  status  KnowledgeDocumentStatus @default(PENDING)
+  error   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspace Workspace        @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  chunks    KnowledgeChunk[]
+
+  @@unique([workspaceId, sourceType, sourceId])
+  @@index([workspaceId])
+  @@index([workspaceId, sourceType])
+  @@index([workspaceId, status])
+  @@index([companyId])
+  @@index([contactId])
+  @@index([leadId])
+}
+
+model KnowledgeChunk {
+  id          String   @id @default(uuid())
+  workspaceId String
+  documentId  String
+  content     String
+  chunkIndex  Int
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  workspace Workspace         @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  document  KnowledgeDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, chunkIndex])
+  @@index([workspaceId])
+  @@index([documentId])
 }

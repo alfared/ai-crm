@@ -42,3 +42,13 @@ export type Contact = Prisma.ContactModel
  * 
  */
 export type Lead = Prisma.LeadModel
+/**
+ * Model KnowledgeDocument
+ * 
+ */
+export type KnowledgeDocument = Prisma.KnowledgeDocumentModel
+/**
+ * Model KnowledgeChunk
+ * 
+ */
+export type KnowledgeChunk = Prisma.KnowledgeChunkModel

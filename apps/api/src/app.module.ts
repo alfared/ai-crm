@@ -7,6 +7,7 @@ import { CompaniesModule } from './companies/companies.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { LeadsModule } from './leads/leads.module';
+import { RagModule } from './rag/rag.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { LeadsModule } from './leads/leads.module';
     CompaniesModule,
     ContactsModule,
     LeadsModule,
+    RagModule,
   ],
   controllers: [AppController],
 })

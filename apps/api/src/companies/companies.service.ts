@@ -4,13 +4,17 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { ListCompaniesQueryDto } from './dto/list-companies-query.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
+import { CrmKnowledgeIndexerService } from 'src/rag/crm-knowledge-indexer.service';
 
 @Injectable()
 export class CompaniesService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly crmKnowledgeIndexerService: CrmKnowledgeIndexerService,
+  ) {}
 
   async create(workspaceId: string, dto: CreateCompanyDto) {
-    return this.prisma.company.create({
+    const company = await this.prisma.company.create({
       data: {
         workspaceId,
         name: dto.name.trim(),
@@ -22,6 +26,10 @@ export class CompaniesService {
         notes: this.normalizeOptionalString(dto.notes),
       },
     });
+
+    await this.crmKnowledgeIndexerService.indexCompany(workspaceId, company.id);
+
+    return company;
   }
 
   async findAll(workspaceId: string, query: ListCompaniesQueryDto) {
@@ -101,7 +109,7 @@ export class CompaniesService {
   async update(workspaceId: string, companyId: string, dto: UpdateCompanyDto) {
     await this.findOne(workspaceId, companyId);
 
-    return this.prisma.company.update({
+    const company = await this.prisma.company.update({
       where: {
         id: companyId,
       },
@@ -129,10 +137,16 @@ export class CompaniesService {
         }),
       },
     });
+
+    await this.crmKnowledgeIndexerService.indexCompany(workspaceId, company.id);
+
+    return company;
   }
 
   async remove(workspaceId: string, companyId: string): Promise<void> {
     await this.findOne(workspaceId, companyId);
+
+    await this.crmKnowledgeIndexerService.removeCompany(workspaceId, companyId);
 
     await this.prisma.company.delete({
       where: {
