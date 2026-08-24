@@ -161,7 +161,7 @@ export class RagService {
 
         chunkIndex: chunk.chunkIndex,
 
-        score: Number(chunk.score),
+        score: Number(chunk.score) >= 0.5,
       })),
     };
   }

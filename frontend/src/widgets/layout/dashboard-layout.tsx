@@ -18,6 +18,10 @@ const navigation = [
     label: "Leads",
     to: "/leads",
   },
+  {
+    label: "AI Assistant",
+    to: "/ai",
+  },
 ];
 
 export function DashboardLayout() {

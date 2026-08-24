@@ -57,7 +57,9 @@ export const ModelName = {
   Contact: 'Contact',
   Lead: 'Lead',
   KnowledgeDocument: 'KnowledgeDocument',
-  KnowledgeChunk: 'KnowledgeChunk'
+  KnowledgeChunk: 'KnowledgeChunk',
+  AIMessage: 'AIMessage',
+  AiConversation: 'AiConversation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -194,6 +196,30 @@ export const KnowledgeChunkScalarFieldEnum = {
 } as const
 
 export type KnowledgeChunkScalarFieldEnum = (typeof KnowledgeChunkScalarFieldEnum)[keyof typeof KnowledgeChunkScalarFieldEnum]
+
+
+export const AIMessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  role: 'role',
+  content: 'content',
+  sources: 'sources',
+  createdAt: 'createdAt'
+} as const
+
+export type AIMessageScalarFieldEnum = (typeof AIMessageScalarFieldEnum)[keyof typeof AIMessageScalarFieldEnum]
+
+
+export const AiConversationScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  userId: 'userId',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiConversationScalarFieldEnum = (typeof AiConversationScalarFieldEnum)[keyof typeof AiConversationScalarFieldEnum]
 
 
 export const SortOrder = {

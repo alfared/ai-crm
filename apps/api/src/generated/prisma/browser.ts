@@ -52,3 +52,13 @@ export type KnowledgeDocument = Prisma.KnowledgeDocumentModel
  * 
  */
 export type KnowledgeChunk = Prisma.KnowledgeChunkModel
+/**
+ * Model AIMessage
+ * 
+ */
+export type AIMessage = Prisma.AIMessageModel
+/**
+ * Model AiConversation
+ * 
+ */
+export type AiConversation = Prisma.AiConversationModel
