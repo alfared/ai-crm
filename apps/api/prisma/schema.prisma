@@ -252,11 +252,17 @@ model AiConversation {
   workspaceId String
   userId      String
   title       String?
+
+  summary     String?
+  summaryMessageCount Int      @default(0)
+  summaryUpdatedAt DateTime?
+
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   workspace Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
   user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
   messages  AIMessage[]
 
   @@index([workspaceId])

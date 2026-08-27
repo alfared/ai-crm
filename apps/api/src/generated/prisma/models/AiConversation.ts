@@ -29,6 +29,8 @@ export type AiConversationMinAggregateOutputType = {
   workspaceId: string | null
   userId: string | null
   title: string | null
+  summary: string | null
+  summaryUpdatedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -38,6 +40,8 @@ export type AiConversationMaxAggregateOutputType = {
   workspaceId: string | null
   userId: string | null
   title: string | null
+  summary: string | null
+  summaryUpdatedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -47,6 +51,8 @@ export type AiConversationCountAggregateOutputType = {
   workspaceId: number
   userId: number
   title: number
+  summary: number
+  summaryUpdatedAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -58,6 +64,8 @@ export type AiConversationMinAggregateInputType = {
   workspaceId?: true
   userId?: true
   title?: true
+  summary?: true
+  summaryUpdatedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -67,6 +75,8 @@ export type AiConversationMaxAggregateInputType = {
   workspaceId?: true
   userId?: true
   title?: true
+  summary?: true
+  summaryUpdatedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -76,6 +86,8 @@ export type AiConversationCountAggregateInputType = {
   workspaceId?: true
   userId?: true
   title?: true
+  summary?: true
+  summaryUpdatedAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -158,6 +170,8 @@ export type AiConversationGroupByOutputType = {
   workspaceId: string
   userId: string
   title: string | null
+  summary: string | null
+  summaryUpdatedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: AiConversationCountAggregateOutputType | null
@@ -188,6 +202,8 @@ export type AiConversationWhereInput = {
   workspaceId?: Prisma.StringFilter<"AiConversation"> | string
   userId?: Prisma.StringFilter<"AiConversation"> | string
   title?: Prisma.StringNullableFilter<"AiConversation"> | string | null
+  summary?: Prisma.StringNullableFilter<"AiConversation"> | string | null
+  summaryUpdatedAt?: Prisma.DateTimeNullableFilter<"AiConversation"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"AiConversation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiConversation"> | Date | string
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
@@ -200,6 +216,8 @@ export type AiConversationOrderByWithRelationInput = {
   workspaceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
+  summary?: Prisma.SortOrderInput | Prisma.SortOrder
+  summaryUpdatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   workspace?: Prisma.WorkspaceOrderByWithRelationInput
@@ -215,6 +233,8 @@ export type AiConversationWhereUniqueInput = Prisma.AtLeast<{
   workspaceId?: Prisma.StringFilter<"AiConversation"> | string
   userId?: Prisma.StringFilter<"AiConversation"> | string
   title?: Prisma.StringNullableFilter<"AiConversation"> | string | null
+  summary?: Prisma.StringNullableFilter<"AiConversation"> | string | null
+  summaryUpdatedAt?: Prisma.DateTimeNullableFilter<"AiConversation"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"AiConversation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiConversation"> | Date | string
   workspace?: Prisma.XOR<Prisma.WorkspaceScalarRelationFilter, Prisma.WorkspaceWhereInput>
@@ -227,6 +247,8 @@ export type AiConversationOrderByWithAggregationInput = {
   workspaceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
+  summary?: Prisma.SortOrderInput | Prisma.SortOrder
+  summaryUpdatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AiConversationCountOrderByAggregateInput
@@ -242,6 +264,8 @@ export type AiConversationScalarWhereWithAggregatesInput = {
   workspaceId?: Prisma.StringWithAggregatesFilter<"AiConversation"> | string
   userId?: Prisma.StringWithAggregatesFilter<"AiConversation"> | string
   title?: Prisma.StringNullableWithAggregatesFilter<"AiConversation"> | string | null
+  summary?: Prisma.StringNullableWithAggregatesFilter<"AiConversation"> | string | null
+  summaryUpdatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"AiConversation"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AiConversation"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AiConversation"> | Date | string
 }
@@ -249,6 +273,8 @@ export type AiConversationScalarWhereWithAggregatesInput = {
 export type AiConversationCreateInput = {
   id?: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutAiConversationsInput
@@ -261,6 +287,8 @@ export type AiConversationUncheckedCreateInput = {
   workspaceId: string
   userId: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   messages?: Prisma.AIMessageUncheckedCreateNestedManyWithoutConversationInput
@@ -269,6 +297,8 @@ export type AiConversationUncheckedCreateInput = {
 export type AiConversationUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutAiConversationsNestedInput
@@ -281,6 +311,8 @@ export type AiConversationUncheckedUpdateInput = {
   workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.AIMessageUncheckedUpdateManyWithoutConversationNestedInput
@@ -291,6 +323,8 @@ export type AiConversationCreateManyInput = {
   workspaceId: string
   userId: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -298,6 +332,8 @@ export type AiConversationCreateManyInput = {
 export type AiConversationUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -307,6 +343,8 @@ export type AiConversationUncheckedUpdateManyInput = {
   workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -331,6 +369,8 @@ export type AiConversationCountOrderByAggregateInput = {
   workspaceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  summaryUpdatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -340,6 +380,8 @@ export type AiConversationMaxOrderByAggregateInput = {
   workspaceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  summaryUpdatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -349,6 +391,8 @@ export type AiConversationMinOrderByAggregateInput = {
   workspaceId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  summaryUpdatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -454,6 +498,8 @@ export type AiConversationUpdateOneRequiredWithoutMessagesNestedInput = {
 export type AiConversationCreateWithoutWorkspaceInput = {
   id?: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiConversationsInput
@@ -464,6 +510,8 @@ export type AiConversationUncheckedCreateWithoutWorkspaceInput = {
   id?: string
   userId: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   messages?: Prisma.AIMessageUncheckedCreateNestedManyWithoutConversationInput
@@ -503,6 +551,8 @@ export type AiConversationScalarWhereInput = {
   workspaceId?: Prisma.StringFilter<"AiConversation"> | string
   userId?: Prisma.StringFilter<"AiConversation"> | string
   title?: Prisma.StringNullableFilter<"AiConversation"> | string | null
+  summary?: Prisma.StringNullableFilter<"AiConversation"> | string | null
+  summaryUpdatedAt?: Prisma.DateTimeNullableFilter<"AiConversation"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"AiConversation"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiConversation"> | Date | string
 }
@@ -510,6 +560,8 @@ export type AiConversationScalarWhereInput = {
 export type AiConversationCreateWithoutUserInput = {
   id?: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutAiConversationsInput
@@ -520,6 +572,8 @@ export type AiConversationUncheckedCreateWithoutUserInput = {
   id?: string
   workspaceId: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   messages?: Prisma.AIMessageUncheckedCreateNestedManyWithoutConversationInput
@@ -554,6 +608,8 @@ export type AiConversationUpdateManyWithWhereWithoutUserInput = {
 export type AiConversationCreateWithoutMessagesInput = {
   id?: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workspace: Prisma.WorkspaceCreateNestedOneWithoutAiConversationsInput
@@ -565,6 +621,8 @@ export type AiConversationUncheckedCreateWithoutMessagesInput = {
   workspaceId: string
   userId: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -588,6 +646,8 @@ export type AiConversationUpdateToOneWithWhereWithoutMessagesInput = {
 export type AiConversationUpdateWithoutMessagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutAiConversationsNestedInput
@@ -599,6 +659,8 @@ export type AiConversationUncheckedUpdateWithoutMessagesInput = {
   workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -607,6 +669,8 @@ export type AiConversationCreateManyWorkspaceInput = {
   id?: string
   userId: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -614,6 +678,8 @@ export type AiConversationCreateManyWorkspaceInput = {
 export type AiConversationUpdateWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiConversationsNestedInput
@@ -624,6 +690,8 @@ export type AiConversationUncheckedUpdateWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.AIMessageUncheckedUpdateManyWithoutConversationNestedInput
@@ -633,6 +701,8 @@ export type AiConversationUncheckedUpdateManyWithoutWorkspaceInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -641,6 +711,8 @@ export type AiConversationCreateManyUserInput = {
   id?: string
   workspaceId: string
   title?: string | null
+  summary?: string | null
+  summaryUpdatedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -648,6 +720,8 @@ export type AiConversationCreateManyUserInput = {
 export type AiConversationUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workspace?: Prisma.WorkspaceUpdateOneRequiredWithoutAiConversationsNestedInput
@@ -658,6 +732,8 @@ export type AiConversationUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   messages?: Prisma.AIMessageUncheckedUpdateManyWithoutConversationNestedInput
@@ -667,6 +743,8 @@ export type AiConversationUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   workspaceId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  summaryUpdatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -707,6 +785,8 @@ export type AiConversationSelect<ExtArgs extends runtime.Types.Extensions.Intern
   workspaceId?: boolean
   userId?: boolean
   title?: boolean
+  summary?: boolean
+  summaryUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -720,6 +800,8 @@ export type AiConversationSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   workspaceId?: boolean
   userId?: boolean
   title?: boolean
+  summary?: boolean
+  summaryUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -731,6 +813,8 @@ export type AiConversationSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   workspaceId?: boolean
   userId?: boolean
   title?: boolean
+  summary?: boolean
+  summaryUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
@@ -742,11 +826,13 @@ export type AiConversationSelectScalar = {
   workspaceId?: boolean
   userId?: boolean
   title?: boolean
+  summary?: boolean
+  summaryUpdatedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AiConversationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "userId" | "title" | "createdAt" | "updatedAt", ExtArgs["result"]["aiConversation"]>
+export type AiConversationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "workspaceId" | "userId" | "title" | "summary" | "summaryUpdatedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["aiConversation"]>
 export type AiConversationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workspace?: boolean | Prisma.WorkspaceDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -774,6 +860,8 @@ export type $AiConversationPayload<ExtArgs extends runtime.Types.Extensions.Inte
     workspaceId: string
     userId: string
     title: string | null
+    summary: string | null
+    summaryUpdatedAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["aiConversation"]>
@@ -1206,6 +1294,8 @@ export interface AiConversationFieldRefs {
   readonly workspaceId: Prisma.FieldRef<"AiConversation", 'String'>
   readonly userId: Prisma.FieldRef<"AiConversation", 'String'>
   readonly title: Prisma.FieldRef<"AiConversation", 'String'>
+  readonly summary: Prisma.FieldRef<"AiConversation", 'String'>
+  readonly summaryUpdatedAt: Prisma.FieldRef<"AiConversation", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"AiConversation", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"AiConversation", 'DateTime'>
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
+import { RagConversationContext } from './types/rag-conversation-message.type';
 
 type RagContext = {
   index: number;
@@ -26,7 +27,15 @@ export class GenerationService {
     );
   }
 
-  async generate(question: string, context: RagContext[]): Promise<string> {
+  async generate(
+    question: string,
+    context: RagContext[],
+    conversationContext: RagConversationContext,
+  ): Promise<string> {
+    const historyText = conversationContext.recentMessages
+      .map((message) => `${message.role.toUpperCase()}: ${message.content}`)
+      .join('\n\n');
+
     const contextText = context
       .map((item) =>
         `
@@ -56,14 +65,22 @@ Rules:
       `.trim(),
 
       input: `
-CRM CONTEXT:
+LONG-TERM CONVERSATION SUMMARY:
+
+${conversationContext.summary ?? 'None'}
+
+RECENT CONVERSATION:
+
+${historyText || 'None'}
+
+RETRIEVED CRM CONTEXT:
 
 ${contextText}
 
-QUESTION:
+CURRENT USER QUESTION:
 
 ${question}
-      `.trim(),
+`.trim(),
     });
 
     return response.output_text;

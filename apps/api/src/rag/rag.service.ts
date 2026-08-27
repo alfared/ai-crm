@@ -7,6 +7,8 @@ import { EmbeddingsService } from './embeddings.service';
 import { RetrievalService } from './retrieval.service';
 import { GenerationService } from './generation.service';
 import { CrmKnowledgeIndexerService } from './crm-knowledge-indexer.service';
+import { QueryRewriteService } from './query-rewrite.service';
+import type { RagConversationContext } from './types/rag-conversation-message.type';
 
 @Injectable()
 export class RagService {
@@ -16,6 +18,7 @@ export class RagService {
     private readonly embeddingsService: EmbeddingsService,
     private readonly retrievalService: RetrievalService,
     private readonly generationService: GenerationService,
+    private readonly queryRewriteService: QueryRewriteService,
     private readonly crmKnowledgeIndexerService: CrmKnowledgeIndexerService,
   ) {}
 
@@ -116,10 +119,23 @@ export class RagService {
     return this.retrievalService.search(workspaceId, question, limit);
   }
 
-  async query(workspaceId: string, question: string, limit: number) {
+  async query(
+    workspaceId: string,
+    question: string,
+    limit: number,
+    conversationContext: RagConversationContext = {
+      summary: null,
+      recentMessages: [],
+    },
+  ) {
+    const standaloneQuestion = await this.queryRewriteService.rewrite(
+      question,
+      conversationContext,
+    );
+
     const chunks = await this.retrievalService.search(
       workspaceId,
-      question,
+      standaloneQuestion,
       limit,
     );
 
@@ -140,6 +156,7 @@ export class RagService {
         sourceId: chunk.sourceId,
         content: chunk.content,
       })),
+      conversationContext,
     );
 
     return {
