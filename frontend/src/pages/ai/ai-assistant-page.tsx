@@ -9,7 +9,10 @@ import {
   renameAiConversation,
   streamAiMessage,
 } from "../../entities/ai-conversation/api/ai-conversation-api";
-import type { AiConversation } from "../../entities/ai-conversation/model/ai-conversation.types";
+import type {
+  AiConversation,
+  AiMessage,
+} from "../../entities/ai-conversation/model/ai-conversation.types";
 
 export function AiAssistantPage() {
   const queryClient = useQueryClient();
@@ -111,7 +114,6 @@ export function AiAssistantPage() {
     abortControllerRef.current = controller;
 
     let conversationId = activeConversationId;
-
     try {
       if (!conversationId) {
         const conversation = await createMutation.mutateAsync();
@@ -120,13 +122,32 @@ export function AiAssistantPage() {
 
         setActiveConversationId(conversationId);
       }
+      const resolvedConversationId: string = conversationId;
 
       const optimisticUserId = `optimistic-user-${crypto.randomUUID()}`;
 
       const streamingAssistantId = `streaming-assistant-${crypto.randomUUID()}`;
 
+      const optimisticUserMessage: AiMessage = {
+        id: optimisticUserId,
+        conversationId: resolvedConversationId,
+        role: "USER",
+        content,
+        sources: null,
+        createdAt: new Date().toISOString(),
+      };
+
+      const optimisticAssistantMessage: AiMessage = {
+        id: streamingAssistantId,
+        conversationId: resolvedConversationId,
+        role: "ASSISTANT",
+        content: "",
+        sources: null,
+        createdAt: new Date().toISOString(),
+      };
+
       queryClient.setQueryData<AiConversation>(
-        ["ai-conversation", conversationId],
+        ["ai-conversation", resolvedConversationId],
         (old) => {
           if (!old) {
             return old;
@@ -136,29 +157,15 @@ export function AiAssistantPage() {
             ...old,
             messages: [
               ...old.messages,
-              {
-                id: optimisticUserId,
-                conversationId,
-                role: "USER",
-                content,
-                sources: null,
-                createdAt: new Date().toISOString(),
-              },
-              {
-                id: streamingAssistantId,
-                conversationId,
-                role: "ASSISTANT",
-                content: "",
-                sources: null,
-                createdAt: new Date().toISOString(),
-              },
+              optimisticUserMessage,
+              optimisticAssistantMessage,
             ],
           };
         },
       );
 
       await streamAiMessage(
-        conversationId,
+        resolvedConversationId,
         content,
         {
           onSources: (sources) => {
