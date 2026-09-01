@@ -216,6 +216,7 @@ export const AiConversationScalarFieldEnum = {
   userId: 'userId',
   title: 'title',
   summary: 'summary',
+  summaryMessageCount: 'summaryMessageCount',
   summaryUpdatedAt: 'summaryUpdatedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

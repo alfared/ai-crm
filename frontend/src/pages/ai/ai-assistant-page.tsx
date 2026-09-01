@@ -99,67 +99,64 @@ export function AiAssistantPage() {
 
   async function handleSend(): Promise<void> {
     const content = message.trim();
-    const controller = new AbortController();
-
-    setMessage("");
-    setStreamError(null);
-    setIsStreaming(true);
-    abortControllerRef.current = controller;
 
     if (!content || isStreaming) {
       return;
     }
 
+    const controller = new AbortController();
+    setMessage("");
+    setStreamError(null);
+    setIsStreaming(true);
+    abortControllerRef.current = controller;
+
     let conversationId = activeConversationId;
 
-    if (!conversationId) {
-      const conversation = await createMutation.mutateAsync();
-
-      conversationId = conversation.id;
-
-      setActiveConversationId(conversationId);
-    }
-
-    const optimisticUserId = `optimistic-user-${crypto.randomUUID()}`;
-
-    const streamingAssistantId = `streaming-assistant-${crypto.randomUUID()}`;
-
-    setMessage("");
-    setIsStreaming(true);
-
-    queryClient.setQueryData<AiConversation>(
-      ["ai-conversation", conversationId],
-      (old) => {
-        if (!old) {
-          return old;
-        }
-
-        return {
-          ...old,
-          messages: [
-            ...old.messages,
-            {
-              id: optimisticUserId,
-              conversationId,
-              role: "USER",
-              content,
-              sources: null,
-              createdAt: new Date().toISOString(),
-            },
-            {
-              id: streamingAssistantId,
-              conversationId,
-              role: "ASSISTANT",
-              content: "",
-              sources: null,
-              createdAt: new Date().toISOString(),
-            },
-          ],
-        };
-      },
-    );
-
     try {
+      if (!conversationId) {
+        const conversation = await createMutation.mutateAsync();
+
+        conversationId = conversation.id;
+
+        setActiveConversationId(conversationId);
+      }
+
+      const optimisticUserId = `optimistic-user-${crypto.randomUUID()}`;
+
+      const streamingAssistantId = `streaming-assistant-${crypto.randomUUID()}`;
+
+      queryClient.setQueryData<AiConversation>(
+        ["ai-conversation", conversationId],
+        (old) => {
+          if (!old) {
+            return old;
+          }
+
+          return {
+            ...old,
+            messages: [
+              ...old.messages,
+              {
+                id: optimisticUserId,
+                conversationId,
+                role: "USER",
+                content,
+                sources: null,
+                createdAt: new Date().toISOString(),
+              },
+              {
+                id: streamingAssistantId,
+                conversationId,
+                role: "ASSISTANT",
+                content: "",
+                sources: null,
+                createdAt: new Date().toISOString(),
+              },
+            ],
+          };
+        },
+      );
+
       await streamAiMessage(
         conversationId,
         content,
@@ -240,6 +237,9 @@ export function AiAssistantPage() {
       ]);
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") {
+        await queryClient.invalidateQueries({
+          queryKey: ["ai-conversation", conversationId],
+        });
         return;
       }
       console.error("AI streaming error:", error);

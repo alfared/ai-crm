@@ -285,7 +285,11 @@ export class AiConversationsService {
       },
     });
 
-    await this.refreshSummaryIfNeeded(conversationId);
+    try {
+      await this.refreshSummaryIfNeeded(conversationId);
+    } catch (error) {
+      console.error('Failed to refresh conversation summary', error);
+    }
 
     return assistantMessage;
   }
@@ -313,6 +317,7 @@ export class AiConversationsService {
       },
       select: {
         summary: true,
+        summaryMessageCount: true,
       },
     });
 
@@ -355,6 +360,7 @@ export class AiConversationsService {
       },
       select: {
         summary: true,
+        summaryMessageCount: true,
       },
     });
 
@@ -374,11 +380,17 @@ export class AiConversationsService {
 
     const summary = await this.conversationSummaryService.summarize(
       conversation?.summary ?? null,
-      messagesToSummarize.map((message) => ({
+      messagesToSummarize.reverse().map((message) => ({
         role: message.role,
         content: message.content,
       })),
     );
+
+    const summarizableCount = messageCount - this.recentMessagesLimit;
+
+    if (summarizableCount <= (conversation?.summaryMessageCount ?? 0)) {
+      return;
+    }
 
     await this.prisma.aiConversation.update({
       where: {
@@ -386,6 +398,7 @@ export class AiConversationsService {
       },
       data: {
         summary,
+        summaryMessageCount: summarizableCount,
         updatedAt: new Date(),
       },
     });
