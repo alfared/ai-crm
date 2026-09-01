@@ -67,3 +67,11 @@ export const KnowledgeSourceType = {
 } as const
 
 export type KnowledgeSourceType = (typeof KnowledgeSourceType)[keyof typeof KnowledgeSourceType]
+
+
+export const AiMessageRole = {
+  USER: 'USER',
+  ASSISTANT: 'ASSISTANT'
+} as const
+
+export type AiMessageRole = (typeof AiMessageRole)[keyof typeof AiMessageRole]

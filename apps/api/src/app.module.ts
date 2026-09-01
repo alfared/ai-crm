@@ -8,6 +8,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { LeadsModule } from './leads/leads.module';
 import { RagModule } from './rag/rag.module';
+import { AiConversationsModule } from './ai-conversations/ai-conversations.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { RagModule } from './rag/rag.module';
     ContactsModule,
     LeadsModule,
     RagModule,
+    AiConversationsModule,
   ],
   controllers: [AppController],
 })

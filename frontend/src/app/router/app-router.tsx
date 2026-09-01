@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
+import { AiAssistantPage } from "../../pages/ai/ai-assistant-page";
 import { LoginPage } from "../../pages/auth/login-page";
 import { RegisterPage } from "../../pages/auth/register-page";
 import { CompaniesPage } from "../../pages/companies/companies-page";
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
           {
             path: "/leads",
             element: <ResourcePlaceholderPage title="Leads" />,
+          },
+          {
+            path: "/ai",
+            element: <AiAssistantPage />,
           },
         ],
       },

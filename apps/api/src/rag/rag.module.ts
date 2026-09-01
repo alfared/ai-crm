@@ -9,6 +9,7 @@ import { RagService } from './rag.service';
 import { RetrievalService } from './retrieval.service';
 import { GenerationService } from './generation.service';
 import { CrmKnowledgeIndexerService } from './crm-knowledge-indexer.service';
+import { QueryRewriteService } from './query-rewrite.service';
 
 @Module({
   imports: [AuthModule, PrismaModule],
@@ -20,6 +21,7 @@ import { CrmKnowledgeIndexerService } from './crm-knowledge-indexer.service';
     RetrievalService,
     GenerationService,
     CrmKnowledgeIndexerService,
+    QueryRewriteService,
   ],
   exports: [RagService, CrmKnowledgeIndexerService],
 })
