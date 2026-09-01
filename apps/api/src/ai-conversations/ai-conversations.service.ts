@@ -175,6 +175,121 @@ export class AiConversationsService {
     };
   }
 
+  async updateTitle(
+    workspaceId: string,
+    userId: string,
+    conversationId: string,
+    title: string,
+  ) {
+    const conversation = await this.prisma.aiConversation.findFirst({
+      where: {
+        id: conversationId,
+        workspaceId,
+        userId,
+      },
+      select: {
+        id: true,
+      },
+    });
+
+    if (!conversation) {
+      throw new NotFoundException('Conversation not found');
+    }
+
+    return this.prisma.aiConversation.update({
+      where: {
+        id: conversationId,
+      },
+      data: {
+        title: title.trim(),
+      },
+    });
+  }
+
+  async prepareMessageStream(
+    workspaceId: string,
+    userId: string,
+    conversationId: string,
+    content: string,
+  ) {
+    const conversation = await this.prisma.aiConversation.findFirst({
+      where: {
+        id: conversationId,
+        workspaceId,
+        userId,
+      },
+    });
+
+    if (!conversation) {
+      throw new NotFoundException('Conversation not found');
+    }
+
+    const question = content.trim();
+
+    const context = await this.buildConversationContext(conversationId);
+
+    const userMessage = await this.prisma.aIMessage.create({
+      data: {
+        conversationId,
+        role: AiMessageRole.USER,
+        content: question,
+      },
+    });
+
+    if (!conversation.title) {
+      await this.prisma.aiConversation.update({
+        where: {
+          id: conversationId,
+        },
+        data: {
+          title: this.createTitle(question),
+        },
+      });
+    }
+
+    const ragResult = await this.ragService.queryStream(
+      workspaceId,
+      question,
+      8,
+      context,
+    );
+
+    return {
+      conversation,
+      userMessage,
+      stream: ragResult.stream,
+      sources: ragResult.sources,
+    };
+  }
+
+  async saveAssistantStreamResult(
+    conversationId: string,
+    answer: string,
+    sources: Prisma.InputJsonValue | null,
+  ) {
+    const assistantMessage = await this.prisma.aIMessage.create({
+      data: {
+        conversationId,
+        role: AiMessageRole.ASSISTANT,
+        content: answer,
+        sources: sources ?? Prisma.JsonNull,
+      },
+    });
+
+    await this.prisma.aiConversation.update({
+      where: {
+        id: conversationId,
+      },
+      data: {
+        updatedAt: new Date(),
+      },
+    });
+
+    await this.refreshSummaryIfNeeded(conversationId);
+
+    return assistantMessage;
+  }
+
   private createTitle(question: string): string {
     const normalized = question.replace(/\s+/g, ' ').trim();
 

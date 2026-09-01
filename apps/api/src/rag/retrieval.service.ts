@@ -3,7 +3,7 @@ import { Prisma } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { EmbeddingsService } from './embeddings.service';
 
-type RetrievedChunk = {
+export type RetrievedChunk = {
   id: string;
   documentId: string;
 

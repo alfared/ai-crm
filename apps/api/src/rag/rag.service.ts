@@ -182,4 +182,47 @@ export class RagService {
       })),
     };
   }
+
+  async queryStream(
+    workspaceId: string,
+    question: string,
+    limit: number,
+    conversationContext: RagConversationContext = {
+      summary: null,
+      recentMessages: [],
+    },
+  ) {
+    const rewrittenQuestion = await this.queryRewriteService.rewrite(
+      question,
+      conversationContext,
+    );
+
+    const chunks = await this.retrievalService.search(
+      workspaceId,
+      rewrittenQuestion,
+      limit,
+    );
+
+    const sources = chunks.map((chunk, index) => ({
+      index: index + 1,
+      documentId: chunk.documentId,
+      title: chunk.title,
+      sourceType: chunk.sourceType,
+      sourceId: chunk.sourceId,
+      companyId: chunk.companyId,
+      contactId: chunk.contactId,
+      leadId: chunk.leadId,
+      chunkIndex: chunk.chunkIndex,
+      score: chunk.score,
+    }));
+
+    return {
+      stream: this.generationService.generateStream(
+        question,
+        chunks,
+        conversationContext,
+      ),
+      sources,
+    };
+  }
 }

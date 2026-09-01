@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
 import { RagConversationContext } from './types/rag-conversation-message.type';
+import { RetrievedChunk } from '../rag/retrieval.service';
 
 type RagContext = {
   index: number;
@@ -84,5 +85,83 @@ ${question}
     });
 
     return response.output_text;
+  }
+
+  async *generateStream(
+    question: string,
+    chunks: RetrievedChunk[],
+    conversationContext: RagConversationContext,
+  ): AsyncGenerator<string> {
+    const context = chunks
+      .map(
+        (chunk, index) =>
+          `[Source ${index + 1}]
+Title: ${chunk.title}
+Type: ${chunk.sourceType}
+
+${chunk.content}`,
+      )
+      .join('\n\n');
+
+    const conversationSummary = conversationContext.summary?.trim()
+      ? `
+Conversation Summary:
+${conversationContext.summary}
+`
+      : '';
+    const recentConversation = conversationContext.recentMessages.length
+      ? `
+Recent conversation:
+${conversationContext.recentMessages
+  .map(
+    (message) =>
+      `${message.role === 'user' ? 'User' : 'Assistant'}: ${message.content}`,
+  )
+  .join('\n')}
+`
+      : '';
+
+    const stream = await this.client.chat.completions.create({
+      model: this.model,
+      stream: true,
+      messages: [
+        {
+          role: 'system',
+          content: `
+You are an AI CRM assistant.
+
+Answer using the supplied CRM context.
+
+Rules:
+- Do not invent CRM facts.
+- If the supplied CRM context does not contain enough information, say so.
+- Use conversation context only to understand follow-up questions and references.
+- Prefer concise, useful answers.
+          `.trim(),
+        },
+        {
+          role: 'system',
+          content: `
+${conversationSummary}
+
+${recentConversation}
+
+CRM context:
+${context}
+
+Current question:
+${question}
+          `.trim(),
+        },
+      ],
+    });
+
+    for await (const chunk of stream) {
+      const content = chunk.choices[0]?.delta?.content;
+
+      if (content) {
+        yield content;
+      }
+    }
   }
 }
