@@ -55,7 +55,11 @@ export const ModelName = {
   User: 'User',
   Company: 'Company',
   Contact: 'Contact',
-  Lead: 'Lead'
+  Lead: 'Lead',
+  KnowledgeDocument: 'KnowledgeDocument',
+  KnowledgeChunk: 'KnowledgeChunk',
+  AIMessage: 'AIMessage',
+  AiConversation: 'AiConversation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -162,12 +166,79 @@ export const LeadScalarFieldEnum = {
 export type LeadScalarFieldEnum = (typeof LeadScalarFieldEnum)[keyof typeof LeadScalarFieldEnum]
 
 
+export const KnowledgeDocumentScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  title: 'title',
+  sourceType: 'sourceType',
+  sourceId: 'sourceId',
+  companyId: 'companyId',
+  contactId: 'contactId',
+  leadId: 'leadId',
+  content: 'content',
+  status: 'status',
+  error: 'error',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type KnowledgeDocumentScalarFieldEnum = (typeof KnowledgeDocumentScalarFieldEnum)[keyof typeof KnowledgeDocumentScalarFieldEnum]
+
+
+export const KnowledgeChunkScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  documentId: 'documentId',
+  content: 'content',
+  chunkIndex: 'chunkIndex',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+} as const
+
+export type KnowledgeChunkScalarFieldEnum = (typeof KnowledgeChunkScalarFieldEnum)[keyof typeof KnowledgeChunkScalarFieldEnum]
+
+
+export const AIMessageScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  role: 'role',
+  content: 'content',
+  sources: 'sources',
+  createdAt: 'createdAt'
+} as const
+
+export type AIMessageScalarFieldEnum = (typeof AIMessageScalarFieldEnum)[keyof typeof AIMessageScalarFieldEnum]
+
+
+export const AiConversationScalarFieldEnum = {
+  id: 'id',
+  workspaceId: 'workspaceId',
+  userId: 'userId',
+  title: 'title',
+  summary: 'summary',
+  summaryMessageCount: 'summaryMessageCount',
+  summaryUpdatedAt: 'summaryUpdatedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiConversationScalarFieldEnum = (typeof AiConversationScalarFieldEnum)[keyof typeof AiConversationScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -184,4 +255,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

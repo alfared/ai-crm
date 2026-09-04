@@ -64,3 +64,23 @@ export type Contact = Prisma.ContactModel
  * 
  */
 export type Lead = Prisma.LeadModel
+/**
+ * Model KnowledgeDocument
+ * 
+ */
+export type KnowledgeDocument = Prisma.KnowledgeDocumentModel
+/**
+ * Model KnowledgeChunk
+ * 
+ */
+export type KnowledgeChunk = Prisma.KnowledgeChunkModel
+/**
+ * Model AIMessage
+ * 
+ */
+export type AIMessage = Prisma.AIMessageModel
+/**
+ * Model AiConversation
+ * 
+ */
+export type AiConversation = Prisma.AiConversationModel

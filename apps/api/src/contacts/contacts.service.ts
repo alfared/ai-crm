@@ -4,17 +4,21 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { ListContactsQueryDto } from './dto/list-contacts-query.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
+import { CrmKnowledgeIndexerService } from 'src/rag/crm-knowledge-indexer.service';
 
 @Injectable()
 export class ContactsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly crmKnowledgeIndexer: CrmKnowledgeIndexerService,
+  ) {}
 
   async create(workspaceId: string, dto: CreateContactDto) {
     if (dto.companyId) {
       await this.ensureCompanyBelongsToWorkspace(workspaceId, dto.companyId);
     }
 
-    return this.prisma.contact.create({
+    const contact = await this.prisma.contact.create({
       data: {
         workspaceId,
         companyId: dto.companyId,
@@ -34,6 +38,10 @@ export class ContactsService {
         },
       },
     });
+
+    await this.crmKnowledgeIndexer.indexContact(workspaceId, contact.id);
+
+    return contact;
   }
 
   async findAll(workspaceId: string, query: ListContactsQueryDto) {
@@ -164,7 +172,7 @@ export class ContactsService {
       await this.ensureCompanyBelongsToWorkspace(workspaceId, dto.companyId);
     }
 
-    return this.prisma.contact.update({
+    const contact = await this.prisma.contact.update({
       where: {
         id: contactId,
       },
@@ -200,11 +208,15 @@ export class ContactsService {
         },
       },
     });
+
+    await this.crmKnowledgeIndexer.indexContact(workspaceId, contact.id);
+    return contact;
   }
 
   async remove(workspaceId: string, contactId: string): Promise<void> {
     await this.findOne(workspaceId, contactId);
 
+    await this.crmKnowledgeIndexer.removeContact(workspaceId, contactId);
     await this.prisma.contact.delete({
       where: {
         id: contactId,

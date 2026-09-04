@@ -1,4 +1,5 @@
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useNavigate } from "react-router";
+import { tokenStorage } from "../../shared/lib/auth/token-storage";
 
 const navigation = [
   {
@@ -17,9 +18,22 @@ const navigation = [
     label: "Leads",
     to: "/leads",
   },
+  {
+    label: "AI Assistant",
+    to: "/ai",
+  },
 ];
 
 export function DashboardLayout() {
+  const navigate = useNavigate();
+
+  function handleLogout(): void {
+    tokenStorage.remove();
+
+    navigate("/login", {
+      replace: true,
+    });
+  }
   return (
     <div className="min-h-screen bg-slate-50">
       <aside className="fixed inset-y-0 left-0 w-64 border-r border-slate-200 bg-white p-6">
@@ -51,6 +65,7 @@ export function DashboardLayout() {
 
           <button
             type="button"
+            onClick={handleLogout}
             className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium hover:bg-slate-50"
           >
             User

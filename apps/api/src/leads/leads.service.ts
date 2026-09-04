@@ -3,6 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { CrmKnowledgeIndexerService } from 'src/rag/crm-knowledge-indexer.service';
 import { LeadStatus, Prisma } from '../generated/prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateLeadDto } from './dto/create-lead.dto';
@@ -11,12 +12,15 @@ import { UpdateLeadDto } from './dto/update-lead.dto';
 
 @Injectable()
 export class LeadsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly crmKnowledgeIndexer: CrmKnowledgeIndexerService,
+  ) {}
 
   async create(workspaceId: string, dto: CreateLeadDto) {
     await this.validateRelations(workspaceId, dto);
 
-    return this.prisma.lead.create({
+    const lead = await this.prisma.lead.create({
       data: {
         workspaceId,
         firstName: dto.firstName.trim(),
@@ -36,6 +40,10 @@ export class LeadsService {
       },
       include: this.getLeadRelations(),
     });
+
+    await this.crmKnowledgeIndexer.indexLead(workspaceId, lead.id);
+
+    return lead;
   }
 
   async findAll(workspaceId: string, query: ListLeadsQueryDto) {
@@ -202,7 +210,7 @@ export class LeadsService {
 
     const statusChanged = dto.status && dto.status !== existingLead.status;
 
-    return this.prisma.lead.update({
+    const lead = await this.prisma.lead.update({
       where: {
         id: leadId,
       },
@@ -243,6 +251,9 @@ export class LeadsService {
       },
       include: this.getLeadRelations(),
     });
+    await this.crmKnowledgeIndexer.indexLead(workspaceId, lead.id);
+
+    return lead;
   }
 
   async updateStatus(workspaceId: string, leadId: string, status: LeadStatus) {
@@ -251,6 +262,8 @@ export class LeadsService {
     if (lead.status === LeadStatus.CONVERTED) {
       throw new BadRequestException('Converted lead status cannot be changed');
     }
+
+    await this.crmKnowledgeIndexer.indexLead(workspaceId, lead.id);
 
     return this.prisma.lead.update({
       where: {
@@ -270,6 +283,8 @@ export class LeadsService {
     if (lead.status === LeadStatus.CONVERTED) {
       throw new BadRequestException('Converted lead cannot be deleted');
     }
+
+    await this.crmKnowledgeIndexer.removeLead(workspaceId, leadId);
 
     await this.prisma.lead.delete({
       where: {
